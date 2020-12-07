@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dashboardbackground"
+    tools:context=".movemarker.taxiui.DashboardActivity">
+
+    <TextView
+        android:id="@+id/tv_versiontext"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/versionText"
+        android:textColor="#F4F0FF"
+        android:textSize="19dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_profile"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent    "
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imv_profile"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/placeholderdash"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_locationtextdb"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/locationTextDb"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/imv_profile"
+                app:layout_constraintTop_toTopOf="parent">
+            </TextView>
+
+            <View
+                android:id="@+id/view_afterlocation"
+                android:layout_width="360dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="10dp"
+                android:background="#C6C6C6"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imv_profile">
+            </View>
+
+            <ImageView
+                android:id="@+id/imv_messageround"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/placeholderdash"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_afterlocation">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_acc"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/acc"
+                android:textColor="@color/colorPink"
+                android:textSize="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/imv_messageround"
+                app:layout_constraintTop_toTopOf="@id/view_afterlocation">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_excellent"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/excellent"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_acc"
+                app:layout_constraintTop_toTopOf="@id/view_afterlocation">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_bearing"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/bearing"
+                android:textColor="@color/colorPink"
+                android:textSize="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_excellent"
+                app:layout_constraintTop_toTopOf="@id/view_afterlocation">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_bearingvalue"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_bearing"
+                app:layout_constraintTop_toTopOf="@id/view_afterlocation">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_network"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/network"
+                android:textColor="@color/colorPink"
+                android:textSize="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_bearingvalue"
+                app:layout_constraintTop_toTopOf="@id/view_afterlocation">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_networkValue"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/network_value"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_network"
+                app:layout_constraintTop_toTopOf="@id/view_afterlocation">
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cardview_profile">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imv_statistics"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/placeholderdash"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_statistics"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/statistics"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/imv_statistics"
+                app:layout_constraintTop_toTopOf="parent">
+            </TextView>
+
+            <View
+                android:id="@+id/view_afterstatistics"
+                android:layout_width="360dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="10dp"
+                android:background="#C6C6C6"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_statistics">
+
+            </View>
+
+            <TextView
+                android:id="@+id/tv_total_com_jobs"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/totalcompjob"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_afterstatistics">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_colon_jobs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_afterstatistics">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_total_com_jobs_value"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/totalcompjobValue"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_colon_jobs"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_afterstatistics">
+            </TextView>
+
+            <View
+                android:id="@+id/view_after_total_com"
+                android:layout_width="360dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="#C6C6C6"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_total_com_jobs">
+            </View>
+
+            <TextView
+                android:id="@+id/tv_time_driven"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/timeDriven"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_total_com">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_colon_time_driven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_total_com">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_time_driven_value"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/timeDrivenValue"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_colon_jobs"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_total_com">
+            </TextView>
+
+            <View
+                android:id="@+id/view_after_of_time_drive"
+                android:layout_width="360dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="#C6C6C6"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_time_driven">
+            </View>
+
+            <TextView
+                android:id="@+id/tv_waiting_time"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/waitingTime"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_time_drive">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_colon_waiting_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_time_drive">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_waiting_time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/waitingTimeValue"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_colon_jobs"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_time_drive">
+            </TextView>
+
+            <View
+                android:id="@+id/view_after_of_Waiting_time"
+                android:layout_width="360dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="#C6C6C6"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_waiting_time">
+            </View>
+
+            <TextView
+                android:id="@+id/tv_today_earnings"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/todayear"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_Waiting_time">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_colon_today_earnings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_Waiting_time">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_today_earnings_value"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/todayearValue"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_colon_jobs"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_Waiting_time">
+            </TextView>
+
+            <View
+                android:id="@+id/view_after_of_today_ear"
+                android:layout_width="360dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="#C6C6C6"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_today_earnings">
+            </View>
+
+            <TextView
+                android:id="@+id/tv_total_earning"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/totalear"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_today_ear">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_colon_total_earnings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_today_ear">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_total_earning_value"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/todayearValue"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_colon_jobs"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_today_ear">
+            </TextView>
+
+            <View
+                android:id="@+id/view_after_of_total_ear"
+                android:layout_width="360dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="#C6C6C6"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_total_earning">
+            </View>
+
+            <TextView
+                android:id="@+id/tv_total_trip"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/totaltrip"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_total_ear">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_colon_total_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_total_ear">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_total_trip_value"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/todayearValue"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_colon_total_trip"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_after_of_total_ear">
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/colorPink"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/imv_location_bottom"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/placeholderdbbottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_track_my_trip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/trackmytrip"
+            android:textColor="#FFFFFF"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imv_location_bottom">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/imv_profile_db"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/profile"
+            app:layout_constraintLeft_toRightOf="@+id/imv_location_bottom"
+            app:layout_constraintTop_toTopOf="parent">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="185dp"
+            android:layout_marginTop="3dp"
+            android:text="@string/profileText"
+            android:textColor="#FFFFFF"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_track_my_trip"
+            app:layout_constraintTop_toBottomOf="@+id/imv_profile_db">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/imv_my_jobs"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:src="@drawable/placeholderdbbottom"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_my_jobs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:text="@string/myjobs"
+            android:textColor="#FFFFFF"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imv_my_jobs">
+        </TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

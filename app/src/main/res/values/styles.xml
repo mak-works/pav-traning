@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.App.TextInputLayoutLogin"
+        parent="@android:style/TextAppearance">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">#9b0254</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+    <style name="TextAppearance.App.TextInputLayoutDashboard"
+        parent="@android:style/TextAppearance">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">#9b0254</item>
+        <item name="android:textSize">16dp</item>
+
+    </style>
+
+</resources>

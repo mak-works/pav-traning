@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">AndroidLearning</string>
+
+    <string name="map_key" translatable="false">AIzaSyDCgfGkAkgdfRyIytAG8jckmw7cyD5PNCs</string>
+    <string name="alcyonTaxi" translatable="false">Alcyon Taxi</string>
+    <string name="signIn" translatable="false">Sign in</string>
+    <string name="signInCaps" translatable="false">SIGN IN</string>
+    <string name="entertext" translatable="false">Enter your mobile no, driver ID  &amp; password</string>
+    <string name="mobiletext" translatable="false">Mobile Number</string>
+    <string name="mobiletextValue" translatable="false">99999123</string>
+    <string name="drivertext" translatable="false">Driver ID</string>
+    <string name="drivertextValue" translatable="false">GL0087</string>
+    <string name="passwordText" translatable="false">Password</string>
+    <string name="forgotText" translatable="false">Forgot Password?</string>
+    <string name="firstnameText" translatable="false">First Name</string>
+    <string name="firstnameTextValue" translatable="false">Tess</string>
+    <string name="LastnameText" translatable="false">Last Name</string>
+    <string name="LastnameTextValue" translatable="false">Driver</string>
+    <string name="passwordTextdb" translatable="false">Password</string>
+    <string name="passwordTextdbValue" translatable="false">123456</string>
+    <string name="conPasswordTextdb" translatable="false">Confirm Password</string>
+    <string name="conPpasswordTextdbValue" translatable="false">123456</string>
+    <string name="startingKMText" translatable="false">Starting KM</string>
+    <string name="startingKMTextValue" translatable="false">259</string>
+    <string name="kmText" translatable="false">KM</string>
+    <string name="emailText" translatable="false">Email</string>
+    <string name="emailTextValue" translatable="false">greeting@gmail.com</string>
+    <string name="profileText" translatable="false">Profile</string>
+    <string name="tessDriverText" translatable="false">Tess Driver</string>
+    <string name="versionText" translatable="false">Version: 1.0.0</string>
+    <string name="locationTextDb" translatable="false">Locating address...</string>
+    <string name="acc" translatable="false">Acc:</string>
+    <string name="excellent" translatable="false">Excellent,</string>
+    <string name="bearing" translatable="false"> Bearing: </string>
+    <string name="network" translatable="false">Network:</string>
+    <string name="network_value" translatable="false">Un Stable</string>
+    <string name="statistics" translatable="false">Statistics</string>
+    <string name="totalcompjob" translatable="false">Total Completed Jobs</string>
+    <string name="totalcompjobValue" translatable="false">0</string>
+    <string name="timeDriven" translatable="false">Time driven</string>
+    <string name="timeDrivenValue" translatable="false">00:00</string>
+    <string name="waitingTime" translatable="false">Waiting Time</string>
+    <string name="waitingTimeValue" translatable="false">00:00</string>
+    <string name="todayear" translatable="false">Today Earnings</string>
+    <string name="todayearValue" translatable="false">0</string>
+    <string name="totalear" translatable="false">Total Earnings</string>
+    <string name="totalearValue" translatable="false">0</string>
+    <string name="totaltrip" translatable="false">Total trips</string>
+    <string name="totaltripValue" translatable="false">0</string>
+    <string name="trackmytrip" translatable="false">Track my trip</string>
+    <string name="myjobs" translatable="false">My jobs</string>
+    <string name="dialogtext" translatable="false">You are in shift out</string>
+
+
+</resources>

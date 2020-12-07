@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".movemarker.taxiui.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imv_location"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="96dp"
+        android:src="@drawable/ic_placeholder"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tv_alcyon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="96dp"
+        android:text="@string/alcyonTaxi"
+        android:textColor="@color/colorPink"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/signIn"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_alcyon">
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_enter_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="43dp"
+        android:text="@string/entertext"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_signin">
+    </TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mobileno_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        android:background="@null"
+        android:hint="@string/mobiletext"
+        android:textColor="@color/colorPink"
+        android:textColorHint="@color/colorPink"
+        app:layout_constraintTop_toTopOf="@+id/tv_enter_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edMobileno"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50sp"
+            android:background="#FFFFFF"
+            android:backgroundTint="@null"
+            android:inputType="text"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/driverID_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="25dp"
+        android:background="@null"
+        android:hint="@string/drivertext"
+        android:textColor="@color/colorPink"
+        android:textColorHint="@color/colorPink"
+        app:layout_constraintTop_toTopOf="@+id/mobileno_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_driver_id"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50sp"
+            android:background="#FFFFFF"
+            android:backgroundTint="@null"
+            android:inputType="text"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passowrd_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="25dp"
+        android:background="@null"
+        android:hint="@string/passwordText"
+        android:textColor="@color/colorPink"
+        android:textColorHint="@color/colorPink"
+        app:layout_constraintTop_toTopOf="@+id/driverID_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_password"
+            android:drawableRight="@drawable/eye"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50sp"
+            android:background="#FFFFFF"
+            android:backgroundTint="@null"
+            android:inputType="textPassword"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/roundedbackground"
+        android:text="@string/signInCaps"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/passowrd_layout" />
+
+    <TextView
+        android:id="@+id/tv_forgot_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="right"
+        android:text="@string/forgotText"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_sign_in"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
