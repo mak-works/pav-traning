@@ -1,4 +1,4 @@
-package com.learning.androidlearning.movemarker;
+package com.learning.androidlearning.movemarker.maps;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -77,12 +77,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void setMarker(LatLng latLng) {
-        newMarker.setPosition(latLng);
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(latLng)
-                .zoom(17f)
-                .build();
-        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        if(newMarker!=null)
+        {
+            newMarker.setPosition(latLng);
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(latLng)
+                    .zoom(17f)
+                    .build();
+            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        }
     }
 
     private void fetchLocation() {

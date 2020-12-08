@@ -37,7 +37,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
-        <activity android:name=".movemarker.MapsActivity">
+        <activity android:name=".movemarker.maps.MapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
