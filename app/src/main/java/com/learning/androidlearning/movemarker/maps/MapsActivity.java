@@ -42,15 +42,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        nextButton = findViewById(R.id.nextButton);
-
         latLongs.add(new LatLng(11.06653854250263, 76.90542933904291));
         latLongs.add(new LatLng(11.045162923268657, 76.92238226293095));
         latLongs.add(new LatLng(11.044005107821436, 76.9233485727666));
         latLongs.add(new LatLng(11.058527853100312, 76.90410966661648));
         latLongs.add(new LatLng(11.045162923268657, 76.92238226293095));
-
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveMarker();
@@ -63,13 +60,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if (tempLatLongs > latLongs.size() - 1) {
             tempLatLongs = 0;
+            setMarker(latLongs.get(tempLatLongs));
         } else {
             Log.d(TAG, "moveMarker: " + latLongs.get(tempLatLongs));
             setMarker(latLongs.get(tempLatLongs));
             tempLatLongs++;
         }
     }
-
     private void setMarker(LatLng latLng) {
         if(newMarker!=null)
         {
@@ -94,6 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
+                    Log.d(TAG, "onSuccess: ");
                     currentLocation = location;
                     Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + "" + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
                     SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.myMap);
@@ -106,8 +104,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        Log.d(TAG, "onMapReady: ");
         mMap = googleMap;
-
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         newMarker = googleMap.addMarker(new MarkerOptions().position(latLng).title("I am here!").draggable(true));
         CameraPosition cameraPosition = new CameraPosition.Builder()
