@@ -43,17 +43,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         nextButton = findViewById(R.id.nextButton);
-        LatLng latLng1 = new LatLng(11.06653854250263, 76.90542933904291);
-        LatLng latLng2 = new LatLng(11.045162923268657, 76.92238226293095);
-        LatLng latLng3 = new LatLng(11.044005107821436, 76.9233485727666);
-        LatLng latLng4 = new LatLng(11.058527853100312, 76.90410966661648);
-        LatLng latLng5 = new LatLng(11.045162923268657, 76.92238226293095);
 
-        latLongs.add(latLng1);
-        latLongs.add(latLng2);
-        latLongs.add(latLng3);
-        latLongs.add(latLng4);
-        latLongs.add(latLng5);
+        latLongs.add(new LatLng(11.06653854250263, 76.90542933904291));
+        latLongs.add(new LatLng(11.045162923268657, 76.92238226293095));
+        latLongs.add(new LatLng(11.044005107821436, 76.9233485727666));
+        latLongs.add(new LatLng(11.058527853100312, 76.90410966661648));
+        latLongs.add(new LatLng(11.045162923268657, 76.92238226293095));
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +59,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLocation();
     }
-
     private void moveMarker() {
 
         if (tempLatLongs > latLongs.size() - 1) {
@@ -134,6 +128,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
         }
     }
-
-
 }
