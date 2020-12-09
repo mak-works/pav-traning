@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
     private void showMessageAlert() {
         ShiftOutDialog shiftOutDialog = new ShiftOutDialog(LoginActivity.this);
         shiftOutDialog.setCancelable(true);
@@ -46,15 +45,9 @@ public class LoginActivity extends AppCompatActivity {
         shiftOutDialog.show();
         shiftOutDialog.setMessage("All fields required");
     }
-
     public void startService() {
         Intent serviceIntent = new Intent(this, ForegroundService.class);
         serviceIntent.putExtra("inputExtra","Foreground service enabled");
         ContextCompat.startForegroundService(this, serviceIntent);
-    }
-    public void stopService()
-    {
-        Intent serviceIntent = new Intent(this, ForegroundService.class);
-        stopService(serviceIntent);
     }
 }

@@ -21,11 +21,11 @@ public class DashboardActivity extends AppCompatActivity {
     public static final String CHANNEL_ID_UPDATE = "ForegroundServiceChannel";
     private ForegroundService foregroundService;
     private Boolean mServiceBound = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        startbindservice();
         findViewById(R.id.tv_statistics).setOnClickListener(v -> {
             ShiftOutDialog shiftOutDialog = new ShiftOutDialog(DashboardActivity.this);
             shiftOutDialog.setCancelable(true);
@@ -33,13 +33,16 @@ public class DashboardActivity extends AppCompatActivity {
             shiftOutDialog.show();
         });
 
-        findViewById(R.id.tv_track_my_trip).setOnClickListener(v -> navigateProfile());
+        findViewById(R.id.tv_track_my_trip).setOnClickListener(
+                v -> navigateProfile()
+        );
 
         findViewById(R.id.imv_profile_db).setOnClickListener(v -> navigateProfile());
     }
     private void navigateProfile() {
         Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
         startActivity(intent);
+        startbindservice();
 
     }
     private void startbindservice() {
@@ -53,8 +56,8 @@ public class DashboardActivity extends AppCompatActivity {
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "onServiceConnected: ");
             ForegroundService.LocalBoundService myBinder = (ForegroundService.LocalBoundService) service;
-            foregroundService=myBinder.getService();
-            foregroundService.getActivityNotification("Updated Text");
+            foregroundService = myBinder.getService();
+            foregroundService.createNotificationChannel("Updated Foreground Notification");
             mServiceBound = true;
         }
         @Override
