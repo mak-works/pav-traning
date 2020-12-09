@@ -1,4 +1,4 @@
-package com.learning.androidlearning.movemarker.maps;
+    package com.learning.androidlearning.movemarker.maps;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -78,7 +78,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
     }
-
     private void fetchLocation() {
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
@@ -101,7 +100,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Log.d(TAG, "onMapReady: ");
@@ -113,9 +111,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .zoom(17f)
                 .build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
