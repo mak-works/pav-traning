@@ -24,10 +24,12 @@ public class ForegroundService extends Service {
     private final IBinder myBinder = new LocalBoundService();
     public static final String CHANNEL_ID = "ForegroundServiceChannel";
     private final String TAG = ForegroundService.class.getSimpleName();
+    Notification notification;
+    NotificationCompat.Builder notificationBuilder;
     @Override
     public void onCreate() {
         super.onCreate();
-    }
+    };
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         String input= intent.getStringExtra("inputExtra");
@@ -49,7 +51,7 @@ public class ForegroundService extends Service {
         return true;
     }
 
-    public void createNotificationChannel() {
+    private void createNotificationChannel() {
         Log.d(TAG, "createNotificationChannel: ");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
@@ -63,7 +65,7 @@ public class ForegroundService extends Service {
             PendingIntent pendingIntent = PendingIntent.getActivity(this,
                     0, notificationIntent, 0);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
-            Notification notification = notificationBuilder.setOngoing(true)
+            notification = notificationBuilder.setOngoing(true)
                     .setSmallIcon(R.drawable.ic_launcher_background)
                     .setContentText("New Foreground notification")
                     .setContentTitle("Foreground Service")
@@ -103,7 +105,6 @@ public class ForegroundService extends Service {
             Log.d(TAG, "notification: " + notification);
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
             notificationManager.notify(1, notificationBuilder.build());
-            startForeground(1, notification);
         }
     }
     public class LocalBoundService extends Binder {

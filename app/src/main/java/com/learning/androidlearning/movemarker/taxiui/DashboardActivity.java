@@ -32,11 +32,13 @@ public class DashboardActivity extends AppCompatActivity {
             shiftOutDialog.show();
 
         });
-
-        findViewById(R.id.tv_track_my_trip).setOnClickListener(
-                v -> navigateProfile()
-        );
-
+        findViewById(R.id.tv_track_my_trip).setOnClickListener(v ->
+                {
+                    if(foregroundService!=null)
+                    {
+                        foregroundService.updateNotification("Forground notification updated");
+                    }
+                });
         findViewById(R.id.imv_profile_db).setOnClickListener(v -> navigateProfile());
     }
 
@@ -57,20 +59,23 @@ public class DashboardActivity extends AppCompatActivity {
         bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
         super.onStart();
     }
-
     private void unBindService() {
-        if (mServiceBound) {
-            unbindService(mServiceConnection);
-            mServiceBound = false;
+        if(mServiceConnection!=null)
+        {
+            if (mServiceBound) {
+                unbindService(mServiceConnection);
+                mServiceBound = false;
+            }
         }
     }
-
     private void navigateProfile() {
         Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
         startActivity(intent);
-        foregroundService.updateNotification("Forground notification updated");
+        if(foregroundService!=null)
+        {
+            foregroundService.updateNotification("Forground notification updated");
+        }
     }
-
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
 
         @Override
@@ -85,6 +90,7 @@ public class DashboardActivity extends AppCompatActivity {
         public void onServiceDisconnected(ComponentName name) {
             Log.d(TAG, "onServiceDisconnected: ");
             mServiceBound = false;
+            mServiceBound=null;
         }
     };
 }

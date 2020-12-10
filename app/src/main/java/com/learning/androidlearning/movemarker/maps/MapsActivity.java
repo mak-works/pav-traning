@@ -7,11 +7,17 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,6 +43,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button nextButton;
     private ArrayList<LatLng> latLongs = new ArrayList<LatLng>();
     private int tempLatLongs = 0;
+    LocationRequest locationRequest;
+    private LocationCallback locationCallback;
+    Handler handler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +58,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latLongs.add(new LatLng(11.058527853100312, 76.90410966661648));
         latLongs.add(new LatLng(11.045162923268657, 76.92238226293095));
         findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
+            
             @Override
             public void onClick(View v) {
                 moveMarker();
             }
         });
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLocation();
+        requestLocationUpdates();
+        
     }
+
+    private void requestLocationUpdates() {
+        LocationRequest locationRequest = new LocationRequest();
+        locationRequest.setInterval(100000);
+        locationRequest.setFastestInterval(50000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(this);
+    }
+
     private void moveMarker() {
 
         if (tempLatLongs > latLongs.size() - 1) {
@@ -99,7 +122,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         });
+
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                for (Location location : locationResult.getLocations()) {
+                    // Update UI with location data
+                    // ...
+                }
+            }
+        };
+       /* Task<Void> task1 = fusedLocationProviderClient.requestLocationUpdates(locationRequest,locationCallback,);*/
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Log.d(TAG, "onMapReady: ");

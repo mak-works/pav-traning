@@ -40,7 +40,6 @@
             android:value="@string/map_key" />
 
         <activity android:name=".movemarker.maps.MapsActivity"></activity>
-
         <service
             android:name=".movemarker.taxiui.ForegroundService"
             android:enabled="true"
