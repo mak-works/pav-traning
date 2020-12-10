@@ -18,7 +18,6 @@ import com.learning.androidlearning.movemarker.taxiui.utils.Utils;
 
 public class DashboardActivity extends AppCompatActivity {
     private final String TAG = DashboardActivity.class.getSimpleName();
-    public static final String CHANNEL_ID_UPDATE = "ForegroundServiceChannel";
     private ForegroundService foregroundService;
     private Boolean mServiceBound = false;
 
@@ -31,6 +30,7 @@ public class DashboardActivity extends AppCompatActivity {
             shiftOutDialog.setCancelable(true);
             shiftOutDialog.getWindow().setBackgroundDrawable(Utils.getDrawableRes(getResources()));
             shiftOutDialog.show();
+
         });
 
         findViewById(R.id.tv_track_my_trip).setOnClickListener(
@@ -39,27 +39,48 @@ public class DashboardActivity extends AppCompatActivity {
 
         findViewById(R.id.imv_profile_db).setOnClickListener(v -> navigateProfile());
     }
-    private void navigateProfile() {
-        Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
-        startActivity(intent);
-        startbindservice();
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        startBindService();
     }
-    private void startbindservice() {
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unBindService();
+    }
+    private void  startBindService() {
         Log.d(TAG, "startbindservice: ");
         Intent intent = new Intent(this, ForegroundService.class);
         bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
         super.onStart();
     }
-    private ServiceConnection mServiceConnection = new ServiceConnection() {
+
+    private void unBindService() {
+        if (mServiceBound) {
+            unbindService(mServiceConnection);
+            mServiceBound = false;
+        }
+    }
+
+    private void navigateProfile() {
+        Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
+        startActivity(intent);
+        foregroundService.updateNotification("Forground notification updated");
+    }
+
+    private final ServiceConnection mServiceConnection = new ServiceConnection() {
+
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "onServiceConnected: ");
             ForegroundService.LocalBoundService myBinder = (ForegroundService.LocalBoundService) service;
             foregroundService = myBinder.getService();
-            foregroundService.createNotificationChannel("Updated Foreground Notification");
             mServiceBound = true;
         }
+
         @Override
         public void onServiceDisconnected(ComponentName name) {
             Log.d(TAG, "onServiceDisconnected: ");
