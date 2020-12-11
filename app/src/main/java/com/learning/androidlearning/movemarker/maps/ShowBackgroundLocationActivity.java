@@ -87,6 +87,12 @@ public class ShowBackgroundLocationActivity extends AppCompatActivity {
         } catch (SecurityException unlikely) {
         }
     }
+    private void removeLocationUpdates() {
+        try {
+            fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+        } catch (SecurityException unlikely) {
+        }
+    }
     private void sendBackgroundLocationToService(Location lastLocation) {
         tvLattitude.setText(String.valueOf(lastLocation.getLatitude()));
         tvLongtitude.setText(String.valueOf(lastLocation.getLongitude()));
@@ -142,5 +148,6 @@ public class ShowBackgroundLocationActivity extends AppCompatActivity {
         super.onDestroy();
         mServiceConnection=null;
         unregisterReceiver(activityReceiver);
+        removeLocationUpdates();
     }
 }

@@ -55,6 +55,7 @@ public class ForegroundService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        removeLocationUpdates();
     }
 
     @Override
@@ -83,6 +84,12 @@ public class ForegroundService extends Service {
             Log.d(TAG, "locationRequest: "+locationRequest);
         } catch (SecurityException unlikely) {
             Log.d(TAG, "requestLocationUpdates: catch");
+        }
+    }
+    private void removeLocationUpdates() {
+        try {
+            fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+        } catch (SecurityException unlikely) {
         }
     }
     private void getBackgroundLocation(Location lastLocation) {
