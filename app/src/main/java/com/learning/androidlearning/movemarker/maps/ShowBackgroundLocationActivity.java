@@ -2,6 +2,8 @@ package com.learning.androidlearning.movemarker.maps;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -28,19 +30,18 @@ public class ShowBackgroundLocationActivity extends AppCompatActivity {
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
     private final String TAG = ShowBackgroundLocationActivity.class.getSimpleName();
-    private TextView tvLongtitude,tvLattitude;
+    private TextView tvLongtitude,tvLatitude;
     private ForegroundService foregroundService;
     private Boolean mServiceBound = false;
     private BroadcastReceiver activityReceiver;
-    private double lattitude,longtitude;
-    private LocalBroadcastManager localBroadcastManager;
+    private double latitude,longtitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_location);
-        tvLongtitude = findViewById(R.id.tv_lattitude);
-        tvLattitude = findViewById(R.id.tv_longtitude);
+        tvLatitude = findViewById(R.id.tv_latitude);
+        tvLongtitude = findViewById(R.id.tv_longtitude);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getBackgroundLocationFromService();
         createLocationCallback();
@@ -52,13 +53,13 @@ public class ShowBackgroundLocationActivity extends AppCompatActivity {
         activityReceiver=new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                lattitude=intent.getDoubleExtra("LATT",lattitude);
+                latitude=intent.getDoubleExtra("LAT",latitude);
                 longtitude=intent.getDoubleExtra("LONG",longtitude);
-                tvLattitude.setText(String.valueOf(lattitude));
+                tvLatitude.setText(String.valueOf(latitude));
                 tvLongtitude.setText(String.valueOf(longtitude));
             }
         };
-        localBroadcastManager=LocalBroadcastManager.getInstance(this);
+        LocalBroadcastManager localBroadcastManager=LocalBroadcastManager.getInstance(this);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(MyAppConstants.BROADCAST_STRING);
         localBroadcastManager.registerReceiver(activityReceiver, intentFilter);
@@ -80,23 +81,18 @@ public class ShowBackgroundLocationActivity extends AppCompatActivity {
         locationRequest.setFastestInterval(50000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
+    @SuppressLint("MissingPermission")
     private void requestLocationUpdates() {
-        try {
             fusedLocationProviderClient.requestLocationUpdates(locationRequest,
                     locationCallback, Looper.myLooper());
-        } catch (SecurityException unlikely) {
-        }
     }
     private void removeLocationUpdates() {
-        try {
-            fusedLocationProviderClient.removeLocationUpdates(locationCallback);
-        } catch (SecurityException unlikely) {
-        }
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
     }
     private void sendBackgroundLocationToService(Location lastLocation) {
-        tvLattitude.setText(String.valueOf(lastLocation.getLatitude()));
+        tvLatitude.setText(String.valueOf(lastLocation.getLatitude()));
         tvLongtitude.setText(String.valueOf(lastLocation.getLongitude()));
-        foregroundService.updateNotification(String.valueOf(lastLocation.getLatitude())+String.valueOf(lastLocation.getLongitude()));
+        foregroundService.GenerateUpdteNotification(String.valueOf(lastLocation.getLatitude())+String.valueOf(lastLocation.getLongitude()));
     }
 
     @Override

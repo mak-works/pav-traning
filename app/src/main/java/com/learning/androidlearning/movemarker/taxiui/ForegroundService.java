@@ -1,5 +1,6 @@
 package com.learning.androidlearning.movemarker.taxiui;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -21,8 +22,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.learning.androidlearning.R;
-import com.learning.androidlearning.movemarker.maps.ShowBackgroundLocationActivity;
-import com.learning.androidlearning.movemarker.taxiui.utils.MyAppConstants;
+    import com.learning.androidlearning.movemarker.taxiui.utils.MyAppConstants;
 
 public class ForegroundService extends Service {
     private final IBinder myBinder = new LocalBoundService();
@@ -44,7 +44,7 @@ public class ForegroundService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand: ");
-        createNotificationChannel();
+        GenerateUpdteNotification("New Foreground Notification");
         return START_NOT_STICKY; }
 
     @Override
@@ -68,7 +68,7 @@ public class ForegroundService extends Service {
             public void onLocationResult(LocationResult locationResult) {
                 Log.d(TAG, "onLocationResult: "+locationResult.getLocations());
                 super.onLocationResult(locationResult);
-                getBackgroundLocation(locationResult.getLastLocation());
+                sendLocationToActivity(locationResult.getLastLocation().getLatitude(),locationResult.getLastLocation().getLongitude());
     }}; }
     private void createLocationRequest() {
         locationRequest = new LocationRequest();
@@ -76,64 +76,26 @@ public class ForegroundService extends Service {
         locationRequest.setFastestInterval(50000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
+    @SuppressLint("MissingPermission")
     private void requestLocationUpdates() {
-        try {
-            Log.d(TAG, "requestLocationUpdates: ");
             fusedLocationProviderClient.requestLocationUpdates(locationRequest,
                     locationCallback, Looper.myLooper());
-            Log.d(TAG, "locationRequest: "+locationRequest);
-        } catch (SecurityException unlikely) {
-            Log.d(TAG, "requestLocationUpdates: catch");
-        }
     }
     private void removeLocationUpdates() {
-        try {
-            fusedLocationProviderClient.removeLocationUpdates(locationCallback);
-        } catch (SecurityException unlikely) {
-        }
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
     }
-    private void getBackgroundLocation(Location lastLocation) {
-        sendLocationtoActivity(lastLocation.getLatitude(),lastLocation.getLongitude());
-    }
-    private void sendLocationtoActivity(double lattitude,double longtitude) {
+
+    private void sendLocationToActivity(double latitude,double longtitude) {
         Intent broadCastIntent=new Intent();
         broadCastIntent.setAction(MyAppConstants.BROADCAST_STRING);
-        broadCastIntent.putExtra("LATT",lattitude);
+        broadCastIntent.putExtra("LAT",latitude);
         broadCastIntent.putExtra("LONG",longtitude);
-        Log.d(TAG, "lattitude: "+lattitude);
+        Log.d(TAG, "latitude: "+latitude);
         Log.d(TAG, "longtitude: "+longtitude);
         LocalBroadcastManager.getInstance(this).sendBroadcast(broadCastIntent);
     }
-    private void createNotificationChannel() {
-        Log.d(TAG, "createNotificationChannel: ------");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel serviceChannel = new NotificationChannel(
-                    MyAppConstants.CHANNEL_ID,
-                    "Foreground Service Channel",
-                    NotificationManager.IMPORTANCE_DEFAULT
-            );
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(serviceChannel);
-            Intent notificationIntent = new Intent(this, LoginActivity.class);
-            PendingIntent pendingIntent = PendingIntent.getActivity(this,
-                    0, notificationIntent, 0);
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, MyAppConstants.CHANNEL_ID);
-            notification = notificationBuilder.setOngoing(true)
-                    .setSmallIcon(R.drawable.ic_launcher_background)
-                    .setContentText("New Foreground notification")
-                    .setContentTitle("Foreground Service")
-                    .setPriority(NotificationManager.IMPORTANCE_MIN)
-                    .setCategory(Notification.CATEGORY_SERVICE)
-                    .setContentIntent(pendingIntent) //intent
-                    .build();
 
-            Log.d(TAG, "notification: "+notification);
-            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-            notificationManager.notify(1, notificationBuilder.build());
-            startForeground(1, notification);
-        }
-    }
-    public void updateNotification(String Text) {
+    public void GenerateUpdteNotification(String Text) {
         Log.d(TAG, "updateNotification: ");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
