@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.maps.ShowLocationActivity">
+        <activity android:name=".movemarker.maps.ShowBackgroundLocationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,9 +40,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
-        <activity android:name=".movemarker.maps.MapsActivity">
-
-        </activity>
+        <activity android:name=".movemarker.maps.MapsActivity"></activity>
 
         <service
             android:name=".movemarker.taxiui.ForegroundService"

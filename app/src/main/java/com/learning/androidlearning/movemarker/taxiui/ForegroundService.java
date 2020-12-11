@@ -5,72 +5,45 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.location.Location;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
-import android.widget.FrameLayout;
-
-import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.learning.androidlearning.R;
-import com.learning.androidlearning.movemarker.maps.ShowLocationActivity;
+import com.learning.androidlearning.movemarker.maps.ShowBackgroundLocationActivity;
+import com.learning.androidlearning.movemarker.taxiui.utils.MyAppConstants;
 
 public class ForegroundService extends Service {
-    private static final String ACTION_BROADCAST ="broadcast" ;
     private final IBinder myBinder = new LocalBoundService();
-    public static final String CHANNEL_ID = "ForegroundServiceChannel";
     private final String TAG = ForegroundService.class.getSimpleName();
     private Notification notification;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
-    private double lattitude,longtitude;
-
-
 
     @Override
     public void onCreate() {
+        Log.d(TAG, "onCreate: ");
         super.onCreate();
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-                Log.d(TAG, "onLocationResult: "+locationResult.getLocations());
-                super.onLocationResult(locationResult);
-                getNewLocation(locationResult.getLastLocation());
-            }
-        };
-
+        createLocationCallback();
         createLocationRequest();
         requestLocationUpdates();
-       /* Intent broadCastIntent=new Intent();
-        broadCastIntent.setAction(ShowLocationActivity.mBroadcastStringAction);
-        broadCastIntent.putExtra("LONG",newLocation.getLatitude());
-        broadCastIntent.putExtra("LATT",newLocation.getLongitude());
-        sendBroadcast(broadCastIntent);*/
-
     }
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        String input= intent.getStringExtra("inputExtra");
-        Log.d(TAG, "onStartCommand: "+input);
+        Log.d(TAG, "onStartCommand: ");
         createNotificationChannel();
         return START_NOT_STICKY; }
 
@@ -78,6 +51,7 @@ public class ForegroundService extends Service {
     public IBinder onBind(Intent intent) {
         return myBinder;
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -86,6 +60,20 @@ public class ForegroundService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         return true;
+    }
+    private void createLocationCallback() {
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                Log.d(TAG, "onLocationResult: "+locationResult.getLocations());
+                super.onLocationResult(locationResult);
+                getBackgroundLocation(locationResult.getLastLocation());
+    }}; }
+    private void createLocationRequest() {
+        locationRequest = new LocationRequest();
+        locationRequest.setInterval(100000);
+        locationRequest.setFastestInterval(50000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
     private void requestLocationUpdates() {
         try {
@@ -97,26 +85,23 @@ public class ForegroundService extends Service {
             Log.d(TAG, "requestLocationUpdates: catch");
         }
     }
-
-    private void createLocationRequest() {
-        locationRequest = new LocationRequest();
-        locationRequest.setInterval(100000);
-        locationRequest.setFastestInterval(50000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+    private void getBackgroundLocation(Location lastLocation) {
+        sendLocationtoActivity(lastLocation.getLatitude(),lastLocation.getLongitude());
     }
-
-
-
-    private void getNewLocation(Location lastLocation) {
-        Log.d(TAG, "getNewLocation: "+lastLocation);
-
-
+    private void sendLocationtoActivity(double lattitude,double longtitude) {
+        Intent broadCastIntent=new Intent();
+        broadCastIntent.setAction(MyAppConstants.BROADCAST_STRING);
+        broadCastIntent.putExtra("LATT",lattitude);
+        broadCastIntent.putExtra("LONG",longtitude);
+        Log.d(TAG, "lattitude: "+lattitude);
+        Log.d(TAG, "longtitude: "+longtitude);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(broadCastIntent);
     }
     private void createNotificationChannel() {
-        Log.d(TAG, "createNotificationChannel: ");
+        Log.d(TAG, "createNotificationChannel: ------");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
-                    CHANNEL_ID,
+                    MyAppConstants.CHANNEL_ID,
                     "Foreground Service Channel",
                     NotificationManager.IMPORTANCE_DEFAULT
             );
@@ -125,7 +110,7 @@ public class ForegroundService extends Service {
             Intent notificationIntent = new Intent(this, LoginActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this,
                     0, notificationIntent, 0);
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, MyAppConstants.CHANNEL_ID);
             notification = notificationBuilder.setOngoing(true)
                     .setSmallIcon(R.drawable.ic_launcher_background)
                     .setContentText("New Foreground notification")
@@ -141,11 +126,11 @@ public class ForegroundService extends Service {
             startForeground(1, notification);
         }
     }
-
     public void updateNotification(String Text) {
+        Log.d(TAG, "updateNotification: ");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
-                    CHANNEL_ID,
+                    MyAppConstants.CHANNEL_ID,
                     "Foreground Service Channel",
                     NotificationManager.IMPORTANCE_DEFAULT
             );
@@ -154,7 +139,7 @@ public class ForegroundService extends Service {
             Intent notificationIntent = new Intent(this, LoginActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this,
                     0, notificationIntent, 0);
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, MyAppConstants.CHANNEL_ID);
             Notification notification = notificationBuilder.setOngoing(true)
                     .setSmallIcon(R.drawable.ic_launcher_background)
                     .setContentText(Text)

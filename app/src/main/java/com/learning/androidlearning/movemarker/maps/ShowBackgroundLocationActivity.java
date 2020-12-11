@@ -1,7 +1,7 @@
 package com.learning.androidlearning.movemarker.maps;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -13,9 +13,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -23,19 +21,19 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.learning.androidlearning.R;
 import com.learning.androidlearning.movemarker.taxiui.ForegroundService;
+import com.learning.androidlearning.movemarker.taxiui.utils.MyAppConstants;
 
-public class ShowLocationActivity extends AppCompatActivity {
+public class ShowBackgroundLocationActivity extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
-    private Location newLocation;
-    private final String TAG = ShowLocationActivity.class.getSimpleName();
+    private final String TAG = ShowBackgroundLocationActivity.class.getSimpleName();
     private TextView tvLongtitude,tvLattitude;
     private ForegroundService foregroundService;
     private Boolean mServiceBound = false;
     private BroadcastReceiver activityReceiver;
     private double lattitude,longtitude;
-    public static final String mBroadcastStringAction = "receiver";
+    private LocalBroadcastManager localBroadcastManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,36 +41,37 @@ public class ShowLocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_location);
         tvLongtitude = findViewById(R.id.tv_lattitude);
         tvLattitude = findViewById(R.id.tv_longtitude);
-
-     /*   activityReceiver=new BroadcastReceiver() {
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        getBackgroundLocationFromService();
+        createLocationCallback();
+        createLocationRequest();
+        requestLocationUpdates();
+    }
+    private void getBackgroundLocationFromService() {
+        Log.d(TAG, "getBackgroundLocationFromService: ");
+        activityReceiver=new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.d(TAG, "onReceive: new");
-                if(intent!=null)
-                {
-                    intent.getDoubleExtra("LONG",lattitude);
-                    intent.getDoubleExtra("LATT",longtitude);
-                    tvLattitude.setText(String.valueOf(lattitude));
-                    tvLongtitude.setText(String.valueOf(longtitude));
-                    Log.d(TAG, "onReceive: "+lattitude);
-                    Log.d(TAG, "onReceive: "+longtitude);
-                }
+                lattitude=intent.getDoubleExtra("LATT",lattitude);
+                longtitude=intent.getDoubleExtra("LONG",longtitude);
+                tvLattitude.setText(String.valueOf(lattitude));
+                tvLongtitude.setText(String.valueOf(longtitude));
             }
         };
-*/
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        localBroadcastManager=LocalBroadcastManager.getInstance(this);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(MyAppConstants.BROADCAST_STRING);
+        localBroadcastManager.registerReceiver(activityReceiver, intentFilter);
+    }
+    private void createLocationCallback() {
         locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 Log.d(TAG, "onLocationResult: "+locationResult.getLocations());
                 super.onLocationResult(locationResult);
-                getNewLocation(locationResult.getLastLocation());
+                sendBackgroundLocationToService(locationResult.getLastLocation());
             }
         };
-
-        createLocationRequest();
-        requestLocationUpdates();
-
     }
     private void createLocationRequest() {
         Log.d(TAG, "createLocationRequest: ");
@@ -83,16 +82,12 @@ public class ShowLocationActivity extends AppCompatActivity {
     }
     private void requestLocationUpdates() {
         try {
-            Log.d(TAG, "requestLocationUpdates: ");
             fusedLocationProviderClient.requestLocationUpdates(locationRequest,
                     locationCallback, Looper.myLooper());
-            Log.d(TAG, "locationRequest: "+locationRequest);
         } catch (SecurityException unlikely) {
-            Log.d(TAG, "requestLocationUpdates: catch");
         }
     }
-
-    private void getNewLocation(Location lastLocation) {
+    private void sendBackgroundLocationToService(Location lastLocation) {
         tvLattitude.setText(String.valueOf(lastLocation.getLatitude()));
         tvLongtitude.setText(String.valueOf(lastLocation.getLongitude()));
         foregroundService.updateNotification(String.valueOf(lastLocation.getLatitude())+String.valueOf(lastLocation.getLongitude()));
@@ -103,7 +98,6 @@ public class ShowLocationActivity extends AppCompatActivity {
         super.onStart();
         startBindService();
     }
-
     private void startBindService() {
         Log.d(TAG, "startbindservice: ");
         Intent intent = new Intent(this, ForegroundService.class);
@@ -116,7 +110,6 @@ public class ShowLocationActivity extends AppCompatActivity {
         super.onStop();
         unBindService();
     }
-
     private void unBindService() {
         if(mServiceConnection!=null)
         {
@@ -126,7 +119,7 @@ public class ShowLocationActivity extends AppCompatActivity {
             }
         }
     }
-    private final ServiceConnection mServiceConnection = new ServiceConnection() {
+    private ServiceConnection mServiceConnection = new ServiceConnection() {
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -140,7 +133,13 @@ public class ShowLocationActivity extends AppCompatActivity {
         public void onServiceDisconnected(ComponentName name) {
             Log.d(TAG, "onServiceDisconnected: ");
             mServiceBound = false;
-            mServiceBound=null;
+            mServiceConnection=null;
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mServiceConnection=null;
+    }
 }

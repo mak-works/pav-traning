@@ -71,10 +71,6 @@ public class DashboardActivity extends AppCompatActivity {
     private void navigateProfile() {
         Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
         startActivity(intent);
-        if(foregroundService!=null)
-        {
-            foregroundService.updateNotification("Forground notification updated");
-        }
     }
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
 
