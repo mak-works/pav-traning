@@ -27,7 +27,6 @@ import com.learning.androidlearning.R;
 public class ForegroundService extends Service {
     private final IBinder myBinder = new LocalBoundService();
     private final String TAG = ForegroundService.class.getSimpleName();
-    private Notification notification;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
