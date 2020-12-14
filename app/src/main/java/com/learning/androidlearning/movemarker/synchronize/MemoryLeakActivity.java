@@ -80,6 +80,5 @@ public class MemoryLeakActivity extends AppCompatActivity {
         super.onDestroy();
         threadOne.interrupt();
         threadTwo.interrupt();
-
     }
 }
