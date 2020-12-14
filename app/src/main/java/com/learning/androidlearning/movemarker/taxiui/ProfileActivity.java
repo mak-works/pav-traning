@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-
 import com.learning.androidlearning.R;
 import com.learning.androidlearning.movemarker.taxiui.utils.ShiftOutDialog;
 import com.learning.androidlearning.movemarker.taxiui.utils.Utils;

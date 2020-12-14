@@ -14,7 +14,7 @@
     tools:context=".MainActivity" />
 
     <Button
-        android:background="@drawable/mybuttonbackground"
+        android:background="@drawable/roundedbackground"
         android:id="@+id/nextButton"
         android:layout_margin="20dp"
         android:layout_gravity="center"

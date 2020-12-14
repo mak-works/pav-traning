@@ -9,7 +9,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -27,16 +27,15 @@ import com.learning.androidlearning.R;
 import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
     private static final int REQUEST_CODE = 101;
     private Location currentLocation;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private GoogleMap mMap;
     private Marker newMarker;
     private final String TAG = MapsActivity.class.getSimpleName();
-    private Button nextButton;
     private ArrayList<LatLng> latLongs = new ArrayList<LatLng>();
     private int tempLatLongs = 0;
+    TextView tvLatitude,tvLongtitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latLongs.add(new LatLng(11.044005107821436, 76.9233485727666));
         latLongs.add(new LatLng(11.058527853100312, 76.90410966661648));
         latLongs.add(new LatLng(11.045162923268657, 76.92238226293095));
+        tvLatitude=findViewById(R.id.tv_latitude);
+        tvLongtitude=findViewById(R.id.tv_longtitude);
         findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
+            
             @Override
             public void onClick(View v) {
                 moveMarker();
@@ -57,7 +59,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fetchLocation();
     }
     private void moveMarker() {
-
         if (tempLatLongs > latLongs.size() - 1) {
             tempLatLongs = 0;
             setMarker(latLongs.get(tempLatLongs));
@@ -78,7 +79,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
     }
-
     private void fetchLocation() {
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
@@ -91,7 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
-                    Log.d(TAG, "onSuccess: ");
+                    Log.d(TAG, "onSuccess:------- ");
                     currentLocation = location;
                     Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + "" + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
                     SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.myMap);
@@ -113,9 +113,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .zoom(17f)
                 .build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {

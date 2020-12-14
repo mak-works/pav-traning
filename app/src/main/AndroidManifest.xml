@@ -7,6 +7,7 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -15,16 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.taxiui.DashboardActivity">
+        <activity android:name=".movemarker.maps.ShowBackgroundLocationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".movemarker.taxiui.ProfileActivity"
-            android:windowSoftInputMode="stateHidden">
-
-        </activity>
-        <activity android:name=".movemarker.taxiui.LoginActivity">
-
-        </activity>
+        <activity android:name=".movemarker.taxiui.DashboardActivity" />
+        <activity
+            android:name=".movemarker.taxiui.ProfileActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".movemarker.taxiui.LoginActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -38,12 +41,12 @@
             android:value="@string/map_key" />
 
         <activity android:name=".movemarker.maps.MapsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+        <service
+            android:name=".movemarker.taxiui.ForegroundService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
