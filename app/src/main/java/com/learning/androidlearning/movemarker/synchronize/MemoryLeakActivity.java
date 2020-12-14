@@ -49,7 +49,9 @@ public class MemoryLeakActivity extends AppCompatActivity {
         @Override
         public void run() {
             MemoryLeakActivity memoryLeakActivity=weakReferenceOne.get();
+            if (!currentThread().isInterrupted()) {
                 memoryLeakActivity.printArrayList();
+            }
             super.run();
         }
     }
@@ -65,7 +67,10 @@ public class MemoryLeakActivity extends AppCompatActivity {
         @Override
         public void run() {
             MemoryLeakActivity memoryLeakActivity=weakReferenceTwo.get();
-            memoryLeakActivity.printArrayList();
+            if(!currentThread().isInterrupted())
+            {
+                memoryLeakActivity.printArrayList();
+            }
             super.run();
         }
     }
