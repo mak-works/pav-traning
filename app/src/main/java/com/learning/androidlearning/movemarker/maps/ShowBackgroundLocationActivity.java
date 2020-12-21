@@ -124,7 +124,6 @@ public class ShowBackgroundLocationActivity extends AppCompatActivity {
             Log.d(TAG, "onServiceConnected: ");
             ForegroundService.LocalBoundService myBinder = (ForegroundService.LocalBoundService) service;
             foregroundService = myBinder.getService();
-            foregroundService.GenerateUpdteNotification("My Notification");
             mServiceBound = true;
         }
 
