@@ -20,7 +20,7 @@ public class SynchronizeThreadActivity extends AppCompatActivity {
     private ArrayList<Integer> integerArrayList = new ArrayList<Integer>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synchronize_thread);
 

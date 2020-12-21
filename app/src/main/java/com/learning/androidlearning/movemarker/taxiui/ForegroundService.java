@@ -7,11 +7,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.Looper;
+import android.provider.Settings;
 import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -22,7 +24,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.learning.androidlearning.R;
-    import com.learning.androidlearning.movemarker.taxiui.utils.MyAppConstants;
+import com.learning.androidlearning.movemarker.maps.ShowBackgroundLocationActivity;
+import com.learning.androidlearning.movemarker.taxiui.utils.MyAppConstants;
 
 public class ForegroundService extends Service {
     private final IBinder myBinder = new LocalBoundService();
@@ -104,16 +107,21 @@ public class ForegroundService extends Service {
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(serviceChannel);
-            Intent notificationIntent = new Intent(this, LoginActivity.class);
+            Intent notificationIntent = new Intent(this, ShowBackgroundLocationActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this,
                     0, notificationIntent, 0);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, MyAppConstants.CHANNEL_ID);
             Notification notification = notificationBuilder.setOngoing(true)
                     .setSmallIcon(R.drawable.ic_launcher_background)
                     .setContentText(Text)
+                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+                   /* .addAction(R.mipmap.ic_launcher,"Open",pendingIntent)*/
+                    .addAction(R.mipmap.ic_launcher,"Open Notification", pendingIntent)
                     .setContentTitle("Foreground Service")
-                    .setPriority(NotificationManager.IMPORTANCE_MIN)
+                    .setPriority(NotificationManager.IMPORTANCE_HIGH)
+                    .setFullScreenIntent(pendingIntent,true)
                     .setCategory(Notification.CATEGORY_SERVICE)
+                    .setColor(Color.BLACK)
                     .setContentIntent(pendingIntent) //intent
                     .build();
             Log.d(TAG, "notification: " + notification);
