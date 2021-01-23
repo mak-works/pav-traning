@@ -17,22 +17,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.ThreadPoolExecutor.ThreadPoolActivity">
-
-        </activity>
-        <activity android:name=".movemarker.synchronize.MemoryLeakActivity">
-
-        </activity>
-        <activity android:name=".movemarker.synchronize.SynchronizeThreadActivity">
-
-        </activity>
-        <activity android:name=".movemarker.maps.ShowBackgroundLocationActivity">
+        <activity android:name=".movemarker.kotlin.KotlinDataTypeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".movemarker.animation.AnimationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".movemarker.maps.MapsMpveActivity" />
+        <activity android:name=".movemarker.ThreadPoolExecutor.ThreadPoolActivity" />
+        <activity android:name=".movemarker.synchronize.MemoryLeakActivity" />
+        <activity android:name=".movemarker.synchronize.SynchronizeThreadActivity" />
+        <activity android:name=".movemarker.maps.ShowBackgroundLocationActivity"></activity>
         <activity android:name=".movemarker.taxiui.DashboardActivity" />
         <activity
             android:name=".movemarker.taxiui.ProfileActivity"
@@ -50,15 +53,12 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
-        <activity android:name=".movemarker.maps.MapsActivity" >
-
-        </activity>
+        <activity android:name=".movemarker.maps.MapsActivity" />
 
         <service
             android:name=".movemarker.taxiui.ForegroundService"
             android:enabled="true"
             android:exported="true" />
-
     </application>
 
 </manifest>

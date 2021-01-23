@@ -1,11 +1,13 @@
 package com.learning.androidlearning.movemarker.taxiui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.learning.androidlearning.R;
 import com.learning.androidlearning.movemarker.taxiui.utils.ShiftOutDialog;
 import com.learning.androidlearning.movemarker.taxiui.utils.Utils;
@@ -47,6 +49,6 @@ public class LoginActivity extends AppCompatActivity {
     public void startService() {
         Intent serviceIntent = new Intent(this, ForegroundService.class);
         serviceIntent.putExtra("inputExtra","Foreground service enabled");
-        ContextCompat.startForegroundService(this, serviceIntent);
+        ContextCompat.startForegroundService(this, serviceIntent);//this is not a correct sign for creating services dont call when the acivty go to from one to another
     }
 }
