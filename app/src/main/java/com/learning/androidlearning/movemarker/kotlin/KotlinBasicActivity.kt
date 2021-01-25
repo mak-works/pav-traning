@@ -7,6 +7,8 @@ import com.learning.androidlearning.R
 
 class KotlinBasicActivity : AppCompatActivity() {
 
+    //
+
      var intVal: Int =35
      var IntValneW: Int =40
      var floatVal:Float = 5.3F
