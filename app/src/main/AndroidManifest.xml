@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.learning.androidlearning">
+    package="com.learning.androidlearning" >
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -16,15 +16,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.kotlin.KotlinDataTypeActivity">
+        android:theme="@style/Theme.AndroidLearning" >
+        <activity android:name=".movemarker.kotlin.KotlinBasicActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".movemarker.animation.AnimationActivity">
+
+        <activity android:name=".movemarker.animation.AnimationActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +36,7 @@
         <activity android:name=".movemarker.ThreadPoolExecutor.ThreadPoolActivity" />
         <activity android:name=".movemarker.synchronize.MemoryLeakActivity" />
         <activity android:name=".movemarker.synchronize.SynchronizeThreadActivity" />
-        <activity android:name=".movemarker.maps.ShowBackgroundLocationActivity"></activity>
+        <activity android:name=".movemarker.maps.ShowBackgroundLocationActivity" />
         <activity android:name=".movemarker.taxiui.DashboardActivity" />
         <activity
             android:name=".movemarker.taxiui.ProfileActivity"
