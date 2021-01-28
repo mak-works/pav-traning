@@ -27,26 +27,59 @@ class OopsActivity : AppCompatActivity() {
         //declared as static
         //it provide better encapsulation
         //static class - Nested class
-        Log.d(TAG, "onCreate: "+NestedClassOne.)
+        execution()
 
 
 
     }
     //Nested class
-    class NestedClassOne
+    class myClass
     {
-        var TAG="NestedClass"
+
+        class nestedClassOne
+        {
+            var TAG="NestedClass"
+            var varOne=10;
+            var varTwo=20;
+            var varThree=30
+
+            fun add()
+            {
+                varThree=varOne+varTwo;
+                Log.d(TAG, "add nested class: "+varThree)
+            }
+
+        }
+    }
+    //inner class
+
+    class myClassTwo
+    {
+        var TAG="InnerClass"
         var varOne=10;
         var varTwo=20;
         var varThree=30
 
-        fun add()
+        inner class innerClassOne
         {
-            varThree=varOne+varTwo;
-            Log.d(TAG, "add: "+varThree)
-        }
+            fun add()
+            {
+                varThree=varOne+varTwo;
+                Log.d(TAG, "add inner class: "+varThree)
+            }
 
+        }
     }
+    
+    fun execution()
+    {
+        val nested =myClass.nestedClassOne()
+        nested.add()
+
+        val myClassTwoOuter=myClassTwo()
+        myClassTwoOuter.innerClassOne().add()
+    }
+
 
 
 
