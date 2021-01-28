@@ -149,19 +149,19 @@ class CollectionsActivity : AppCompatActivity() {
     }
     private fun printArrayList()
     {
-        var arraylistOne = ArrayList<String>()
-        arraylistOne.add("Pavithra")
-        arraylistOne.add("Jaya")
+        var arrayListOne = ArrayList<String>()
+        arrayListOne.add("Pavithra")
+        arrayListOne.add("Jaya")
 
-        for(i in arraylistOne)
+        for(i in arrayListOne)
         {
             Log.d(TAG, "printArrayList: "+i)
         }
-        Log.d(TAG, "index of Pavithra"+arraylistOne.indexOf("Pavithra"))
-        arraylistOne.clear()
+        Log.d(TAG, "index of Pavithra"+arrayListOne.indexOf("Pavithra"))
+        arrayListOne.clear()
 
-            Log.d(TAG, "After clearing the arrayList size is : " +arraylistOne.size)
-            Log.d(TAG, "After clearing the arrayList is: "+arraylistOne)
+            Log.d(TAG, "After clearing the arrayList size is : " +arrayListOne.size)
+            Log.d(TAG, "After clearing the arrayList is: "+arrayListOne)
     }
 
 }

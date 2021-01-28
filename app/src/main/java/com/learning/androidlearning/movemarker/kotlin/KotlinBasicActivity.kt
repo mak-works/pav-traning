@@ -7,12 +7,12 @@ import com.learning.androidlearning.R
 
 class KotlinBasicActivity : AppCompatActivity() {
 
-    //kotlin all data types are primitive data types - Int,Float,Double,Char,Boolean-use wrapper class for primitive-
-    // When it convert to JVM code kotlin primitive convert to java primitive-behave like objects
-    //reference type is Array,String,Classes,Interfaces
+  /*  kotlin all data types are primitive data types - Int,Float,Double,Char,Boolean-use wrapper class for primitive-
+     When it convert to JVM code kotlin primitive convert to java primitive-behave like objects
+    reference type is Array,String,Classes,Interfaces*/
 
     private var intVal: Int = 35
-    private var IntValneW: Int = 40
+    private var intValneW: Int = 40
     private var floatVal: Float = 5.3F
     private var strVal: String = "Pavithra"
     private var dobVal: Double = 11.3
@@ -33,9 +33,9 @@ class KotlinBasicActivity : AppCompatActivity() {
         printVaribales()
         printOperators()
         typeConversion()
-        ifinsteadOfTernary()
+        ifInsteadOfTernary()
         printForLoop()
-        WhenInsteadOfSwitch()
+        whenInsteadOfSwitch()
         var returnValue=functionWithArguementandReturn(num)
         functionWithArguementDirectPass("Things")
         Log.d(TAG, "returnValue: "+returnValue)
@@ -59,7 +59,7 @@ class KotlinBasicActivity : AppCompatActivity() {
     private fun printOperators() {
         Log.d(TAG, "Multiplication: " + intVal * myNewValue)
         Log.d(TAG, "Reminder: " + intVal % myNewValue)
-        Log.d(TAG, "printOperators: " + (intVal > IntValneW));
+        Log.d(TAG, "printOperators: " + (intVal > intValneW));
         Log.d(TAG, "printOperators: " + (10.shl(5)));
         //All operators all like java except bitwise shl
     }
@@ -78,8 +78,8 @@ class KotlinBasicActivity : AppCompatActivity() {
         toChar()*/
     }
 
-    private fun ifinsteadOfTernary() {
-        Log.d(TAG, "ifinsteadOfTernary: " + if (intVal > IntValneW) intVal else IntValneW)
+    private fun ifInsteadOfTernary() {
+        Log.d(TAG, "ifinsteadOfTernary: " + if (intVal > intValneW) intVal else intValneW)
     }
 
     private fun printForLoop() {
@@ -111,7 +111,7 @@ class KotlinBasicActivity : AppCompatActivity() {
         }
     }
 
-    private fun WhenInsteadOfSwitch() {
+    private fun whenInsteadOfSwitch() {
         var i = 10;
         when (i) {
             1 -> Log.d(TAG, "WhenInsteadOfSwitch: The variable values is 1")

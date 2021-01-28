@@ -20,7 +20,6 @@ class ArrayActivity : AppCompatActivity() {
     }
 
     private fun printArray() {
-
         //printing array
         for(i in arrayTypeOne.indices)
         {
@@ -48,8 +47,7 @@ class ArrayActivity : AppCompatActivity() {
         {
             Log.d(TAG, "printArray after setting: "+arrayTypeTwo[i])
         }
-        var index:Int
-        var value:Int
+
 
         //print the array with position
         for((index,value) in arrayTypeOne.withIndex())

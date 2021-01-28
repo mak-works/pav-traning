@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
+        <activity android:name=".movemarker.kotlin.OopsActivity"></activity>
         <activity android:name=".movemarker.kotlin.CollectionsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,13 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".movemarker.kotlin.ArrayActivity">
-
-        </activity>
-        <activity android:name=".movemarker.kotlin.KotlinBasicActivity">
-
-        </activity>
-        <activity android:name=".movemarker.animation.AnimationActivity"></activity>
+        <activity android:name=".movemarker.kotlin.ArrayActivity"></activity>
+        <activity android:name=".movemarker.kotlin.KotlinBasicActivity"></activity>
+        <activity android:name=".movemarker.animation.AnimationActivity" />
         <activity android:name=".movemarker.maps.MapsMpveActivity" />
         <activity android:name=".movemarker.ThreadPoolExecutor.ThreadPoolActivity" />
         <activity android:name=".movemarker.synchronize.MemoryLeakActivity" />
