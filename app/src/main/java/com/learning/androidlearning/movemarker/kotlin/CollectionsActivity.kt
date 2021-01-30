@@ -6,7 +6,7 @@ import android.util.Log
 import com.learning.androidlearning.R
 
 class CollectionsActivity : AppCompatActivity() {
-    var TAG:String="CollectionsActivity"
+    private var TAG:String="CollectionsActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

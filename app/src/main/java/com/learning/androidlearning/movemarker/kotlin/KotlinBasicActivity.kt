@@ -17,6 +17,7 @@ class KotlinBasicActivity : AppCompatActivity() {
     private var strVal: String = "Pavithra"
     private var dobVal: Double = 11.3
     private var char: Char = 'a'
+    var lastName: String? = null
 
     private var myNewValue = 50
     private var floatValNew = 5.5

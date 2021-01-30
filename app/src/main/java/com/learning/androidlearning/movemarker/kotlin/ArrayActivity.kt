@@ -7,9 +7,8 @@ import com.learning.androidlearning.R
 
 class ArrayActivity : AppCompatActivity() {
     private val TAG:String ="ArrayActivity"
-    val arrayTypeOne = arrayOf(1, 2, 3, 4)
-    val arrayTypeTwo=arrayOf<Int>(1,2,3,4,5)
-    val arrayTypeFour= intArrayOf(1,2,3,4,5);
+    private val arrayTypeOne = arrayOf(1, 2, 3, 4)
+    private val arrayTypeTwo=arrayOf<Int>(1,2,3,4,5)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
