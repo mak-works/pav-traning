@@ -46,7 +46,7 @@ class KotlinBasicActivity : AppCompatActivity() {
 
     private fun printVaribales() {
         Log.d(TAG, "IntVal: " + intVal)
-        Log.d(TAG, "floatVal: " + floatVal)
+        Log.d(TAG, "floatVal: " +floatVal)
         Log.d(TAG, "strVal: " + strVal)
         Log.d(TAG, "dobVal: " + dobVal)
         Log.d(TAG, "char: " + char)
@@ -55,11 +55,12 @@ class KotlinBasicActivity : AppCompatActivity() {
         Log.d(TAG, "strValNew: " + strValNew)
         Log.d(TAG, "dobValNew: " + dobValNew)
         Log.d(TAG, "immutValue: " + immutValue)
+        Log.d(TAG, "printVaribales: ${immutValue.length}")
     }
 
     private fun printOperators() {
         Log.d(TAG, "Multiplication: " + intVal * myNewValue)
-        Log.d(TAG, "Reminder: " + intVal % myNewValue)
+        Log.d(TAG, "Reminder: " +intVal % myNewValue)
         Log.d(TAG, "printOperators: " + (intVal > intValneW));
         Log.d(TAG, "printOperators: " + (10.shl(5)));
         //All operators all like java except bitwise shl
