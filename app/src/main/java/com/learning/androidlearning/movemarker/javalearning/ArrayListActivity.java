@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class ArrayListActivity extends AppCompatActivity {
 
     private ArrayList<Object> diffValuesArrayList = new ArrayList<Object>();
+    private GenericClass<Integer> myClassArrayList=new GenericClass();
     private String TAG= ArrayListActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +23,19 @@ public class ArrayListActivity extends AppCompatActivity {
         diffValuesArrayList.add(11);
         diffValuesArrayList.add(50);
         diffValuesArrayList.add("two");
+
+        myClassArrayList.add(50);
+        myClassArrayList.add(70);
+        myClassArrayList.add(100);
+        myClassArrayList.add(500);
         getValues();
     }
     private void getValues()
     {
         Log.d(TAG, "getValues: ");
-        for (int i = 0; i < diffValuesArrayList.size(); i++)
+        for (int i = 0; i < myClassArrayList.size(); i++)
         {
-            Log.d(TAG, "Different Values arrayList: "+diffValuesArrayList.get(i));
+            Log.d(TAG, "Different Values arrayList: "+myClassArrayList.get(i));
         }
     }
 
