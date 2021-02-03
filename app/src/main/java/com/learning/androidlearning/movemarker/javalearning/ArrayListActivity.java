@@ -24,11 +24,12 @@ public class ArrayListActivity extends AppCompatActivity {
         diffValuesArrayList.add(50);
         diffValuesArrayList.add("two");
 
-        myClassArrayList.add(50);
-        myClassArrayList.add(70);
-        myClassArrayList.add(100);
-        myClassArrayList.add(500);
+        myClassArrayList.add(0,50);
+        myClassArrayList.add(1,70);
+        myClassArrayList.add(2,100);
+        myClassArrayList.add(3,500);
         getValues();
+        int a=myClassArrayList.get(0);
     }
     private void getValues()
     {

@@ -1,5 +1,7 @@
 package com.learning.androidlearning.movemarker.javalearning;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
@@ -12,32 +14,28 @@ public class GenericClass<E> extends AbstractList<E>
      implements List<E>, RandomAccess, Cloneable, Serializable
 
     {
-    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
-    transient Object[] data;
-    int DEFAULT_CAPACITY = 10;
-    int size;
+    private transient E[] data;
+    private int size;
+    private static final int DEFAULT_CAPACITY = 10;
+    private String TAG=GenericClass.class.getSimpleName();
 
     public GenericClass(int capacity)
     {
-        if (capacity < 0)
-            throw new IllegalArgumentException();
-             data = (E[]) new Object[capacity];
+        data = (E[]) new Object[capacity];
+    }
+    public GenericClass()
+    {
+        this(DEFAULT_CAPACITY);
     }
 
     @Override
     public E get(int index)
       {
-      return (E) data[index];
+      return data[index];
       }
-
-        @Override
-        public Object set(int index, Object element) {
-            return null;
-        }
-
-        @Override
-        public int size() {
-        return 0;
+      @Override
+      public int size() {
+        return size;
     }
 
         @Override
@@ -45,17 +43,21 @@ public class GenericClass<E> extends AbstractList<E>
             return false;
         }
 
-        public void add(int index, Object e)
+        public void add(int index, E e)
         {
-        if(size==data.length)
-        {
+            Log.d(TAG, "size: "+size);
+            Log.d(TAG, "data.length: "+data.length);
+            Log.d(TAG, "add:--- ");
+            Log.d(TAG, "add:------ ");
+
             ensureCapacity(size + 1);
-        }
-        if(index!=size)
-        {
+
+            Log.d(TAG, "data: "+data);
+            Log.d(TAG, "index: "+index);
+
             System.arraycopy(data, index, data, index + 1,
                     size - index);
-        }
+
         data[index] = e;
         size++;
 
