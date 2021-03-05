@@ -46,7 +46,7 @@ public class FunctionalInterface extends AppCompatActivity {
         Log.d(TAG, "onCreate: "+p);
 
 
-        //Build in functional inetrface Function interface
+        //Build in functional inetrface Function
         Function<Long, Long> adder = (value) -> value + 3;
         Long resultLambda = adder.apply((long) 8);
         Log.d(TAG, "Lambda in Fucntion: "+resultLambda);
@@ -59,7 +59,7 @@ public class FunctionalInterface extends AppCompatActivity {
 
     }
 
-
+    //Manual functional interface
     @java.lang.FunctionalInterface
     public interface MyfunctionalInterface
     {

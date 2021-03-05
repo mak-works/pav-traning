@@ -10,4 +10,7 @@
     <color name="gray">#FFFFFFFF</color>
     <color name="colorPink">#9b0254</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorRed">#FF080C</color>
+    <color name="colorgreen">#21d92d</color>
+
 </resources>

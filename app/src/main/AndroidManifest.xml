@@ -17,19 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.javalearning.FunctionalInterface">
-
+        <activity android:name=".movemarker.roomdbnew.AddDriverActivity">
         </activity>
-        <activity android:name=".movemarker.javalearning.ArrayListActivity">
+        <activity android:name=".movemarker.roomdbnew.RoomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".movemarker.kotlin.KotlinFunctionsActivity">
-
-        </activity>
+        <activity android:name=".movemarker.roomdb.ViewDetailsActivity" />
+        <activity android:name=".movemarker.roomdb.AddDetailsActivity"></activity>
+        <activity android:name=".movemarker.NotificationActivity" />
+        <activity android:name=".movemarker.javalearning.FunctionalInterface" />
+        <activity android:name=".movemarker.javalearning.ArrayListActivity" />
+        <activity android:name=".movemarker.kotlin.KotlinFunctionsActivity" />
         <activity android:name=".movemarker.kotlin.OopsActivity" />
         <activity android:name=".movemarker.kotlin.CollectionsActivity" />
         <activity android:name=".movemarker.kotlin.ArrayActivity" />

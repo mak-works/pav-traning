@@ -36,7 +36,7 @@ public class DashboardActivity extends AppCompatActivity {
                 {
                     if(foregroundService!=null)
                     {
-                        foregroundService.GenerateUpdteNotification("Forground notification updated");
+                        /*foregroundService.GenerateUpdteNotification("Forground notification updated");*/
                     }
                 });
         findViewById(R.id.imv_profile_db).setOnClickListener(v -> navigateProfile());

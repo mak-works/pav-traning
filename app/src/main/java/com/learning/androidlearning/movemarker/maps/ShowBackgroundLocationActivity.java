@@ -85,7 +85,7 @@ public class ShowBackgroundLocationActivity extends AppCompatActivity {
         Log.d(TAG, "sendBackgroundLocationToService: "+lastLocation);
         if(foregroundService!=null)
         {
-            foregroundService.GenerateUpdteNotification(String.valueOf(lastLocation.getLatitude()) + String.valueOf(lastLocation.getLongitude()));
+            /*foregroundService.GenerateUpdteNotification(String.valueOf(lastLocation.getLatitude()) + String.valueOf(lastLocation.getLongitude()));*/
         }
     }
 
@@ -124,7 +124,7 @@ public class ShowBackgroundLocationActivity extends AppCompatActivity {
             Log.d(TAG, "onServiceConnected: ");
             ForegroundService.LocalBoundService myBinder = (ForegroundService.LocalBoundService) service;
             foregroundService = myBinder.getService();
-            foregroundService.GenerateUpdteNotification("My Notification");
+           /* foregroundService.GenerateUpdteNotification("My Notification");*/
             mServiceBound = true;
         }
 

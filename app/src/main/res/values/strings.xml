@@ -52,6 +52,9 @@
     <string name="dialogtext" translatable="false">You are in shift out</string>
     <string name="pluspath" translatable="false">M32,3V61 M3,32H61</string>
     <string name="equalpath" translatable="false">M3,52H61 M4,35H61</string>
+    <string name="countDownNoti" translatable="false">Count down Notification</string>
+    <string name="countDown" translatable="false">Count down</string>
+
     <string name="newequal" translatable="false">M 1 9 L 23 9 C 23.551 9 24 8.551 24 8 C 24 7.449 23.551 7 23 7 L 1 7 C 0.449 7 0 7.449 0 8 C 0 8.551
        0.449 9 1 9 Z M 1 9 M 23 15 L 1 15 C 0.449 15 0 15.449 0 16 C 0 16.551 0.449 17 1 17 L 23 17 C 23.551 17 24 16.551 24 16
        C 24 15.449 23.551 15 23 15 Z M 23 15</string>
@@ -70,6 +73,7 @@
         L 276 276 L 276 492 C 276 503.046 267.046 512 256 512 C 244.954 512 236 503.046 236 492 L 236 276 L 20 276 C 8.954 276 0 267.046 0 256 C 0 244.954 8.954 236 20
         236 M 256 341.333 C 256 341.333 256 341.333 256 341.333 C 256 341.333 256 341.333 256 341.333 L 256 341.333 L 256 341.333 C 256 341.333 256 341.333 256 341.333
         C 256 341.333 256 341.333 256 341.333 L 256 341.333</string>
+    <string name="countValue">CountDown %1$s %2$s:%3$s %4$s</string>
 
 
 </resources>
