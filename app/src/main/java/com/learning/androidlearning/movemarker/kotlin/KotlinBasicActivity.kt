@@ -19,6 +19,7 @@ class KotlinBasicActivity : AppCompatActivity() {
     private var char: Char = 'a'
     var lastName: String? = null
 
+
     private var myNewValue = 50
     private var floatValNew = 5.5
     private var strValNew = "Pavithra S"
@@ -37,9 +38,6 @@ class KotlinBasicActivity : AppCompatActivity() {
         ifInsteadOfTernary()
         printForLoop()
         whenInsteadOfSwitch()
-        var returnValue=functionWithArguementandReturn(num)
-        functionWithArguementDirectPass("Things")
-        Log.d(TAG, "returnValue: "+returnValue)
 
 
     }
@@ -81,6 +79,7 @@ class KotlinBasicActivity : AppCompatActivity() {
     }
 
     private fun ifInsteadOfTernary() {
+
         Log.d(TAG, "ifinsteadOfTernary: " + if (intVal > intValneW) intVal else intValneW)
     }
 
@@ -126,31 +125,9 @@ class KotlinBasicActivity : AppCompatActivity() {
                 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 -> Log.d(TAG, "The number is between 11 to 20: ")
             }
         }
-
-
     }
 
-    //functions
-    private fun functionWithArguementandReturn(floatNumber: Any): Any {
-        when (floatNumber) {
-            is Int -> Log.d(TAG, "The num value is Int: ")
-            is Float -> Log.d(TAG, "The num value is Float: ")
-            is Double -> Log.d(TAG, "The num value is Double: ")
 
-        }
-        return floatNumber;
-    }
-    //functions with arguement direct passing
-    private fun functionWithArguementDirectPass(value: Any): Any {
-        when (value) {
-            is Int -> Log.d(TAG, "The num value is Int: ")
-            is Float -> Log.d(TAG, "The num value is Float: ")
-            is Double -> Log.d(TAG, "The num value is Double: ")
-            is String -> Log.d(TAG, "The num value is String ")
-
-        }
-        return value;
-    }
 
 
 
