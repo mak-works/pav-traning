@@ -17,13 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.roomdbnew.AddDriverActivity">
-        </activity>
-        <activity android:name=".movemarker.roomdbnew.RoomActivity">
-
-        </activity>
+        <activity android:name=".movemarker.kotlin.splash.SplashActivity"></activity>
+        <activity android:name=".movemarker.roomdbnew.AddDriverActivity" />
+        <activity android:name=".movemarker.roomdbnew.RoomActivity" />
         <activity android:name=".movemarker.roomdb.ViewDetailsActivity" />
-        <activity android:name=".movemarker.roomdb.AddDetailsActivity"></activity>
+        <activity android:name=".movemarker.roomdb.AddDetailsActivity" />
         <activity android:name=".movemarker.javalearning.FunctionalInterface" />
         <activity android:name=".movemarker.javalearning.ArrayListActivity" />
         <activity android:name=".movemarker.kotlin.KotlinFunctionsActivity" />

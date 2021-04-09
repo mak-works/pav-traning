@@ -317,7 +317,6 @@ class OopsActivity : AppCompatActivity() {
         Arithmetic.add()
         Arithmetic.mul(10,10)
 
-
         val addOne=add.addOne(10,10)
         Log.d(TAG, "Sealed class one value: "+addOne.z)
 
@@ -332,17 +331,5 @@ class OopsActivity : AppCompatActivity() {
         Log.d(TAG, "componentOne: "+componentOne)
         Log.d(TAG, "componentTwo: "+componentTwo)
         Log.d(TAG, "equals operator: "+p1.equals(p2)) //operatorthree
-
-
     }
-
-
-
-
-
-
-
-
-
-
 }
