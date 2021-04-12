@@ -1,16 +1,12 @@
 package com.learning.androidlearning.movemarker.kotlin.splash
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.learning.androidlearning.R
 
-class SplashActivity : AppCompatActivity() {
-
+class BookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-        val splashFragment: SplashFragment = SplashFragment.newInstance();
-
+        setContentView(R.layout.activity_book)
     }
 }

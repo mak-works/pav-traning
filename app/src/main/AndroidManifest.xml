@@ -7,6 +7,7 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
@@ -17,7 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.kotlin.splash.SplashActivity"></activity>
+        <activity android:name=".movemarker.kotlin.splash.BookActivity"></activity>
+        <activity android:name=".movemarker.kotlin.splash.LoginActivity" />
+        <activity android:name=".movemarker.kotlin.splash.NetworkErrorActivity" />
+        <activity android:name=".movemarker.kotlin.splash.SplashActivity" />
         <activity android:name=".movemarker.roomdbnew.AddDriverActivity" />
         <activity android:name=".movemarker.roomdbnew.RoomActivity" />
         <activity android:name=".movemarker.roomdb.ViewDetailsActivity" />
