@@ -6,8 +6,16 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 
 public class AppController:Application() {
+
+    var newLanguage: String?=null
+    override fun onCreate() {
+        super.onCreate()
+        INSTANCE = this
+    }
+
     companion object
     {
+
         fun isOnline(ctx: Context): Boolean {
             val connectivity = ctx.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
             if (connectivity != null) {
@@ -22,6 +30,20 @@ public class AppController:Application() {
             }
             return false
         }
+
+        lateinit var INSTANCE: AppController
+        fun getInstance(): AppController {
+            return INSTANCE
+        }
+
+
+
+
     }
+    fun setLanguage(language: String) {
+        newLanguage = language
+    }
+
+
 
 }

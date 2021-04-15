@@ -3,5 +3,25 @@
         <dimen name="tvSizeDashboard">16dp</dimen>
 
         <dimen name="tvSizeProfile">17dp</dimen>
+    <dimen name="material_4dp">4dp</dimen>
+    <dimen name="material_8dp">8dp</dimen>
+    <dimen name="material_10dp">10dp</dimen>
+    <dimen name="material_16dp">16dp</dimen>
+    <dimen name="material_24dp">24dp</dimen>
+    <dimen name="material_28dp">28dp</dimen>
+    <dimen name="material_32dp">32dp</dimen>
+    <dimen name="material_40dp">40dp</dimen>
+    <dimen name="material_48dp">48dp</dimen>
+    <dimen name="material_56dp">56dp</dimen>
+
+
+    <integer name="anim_duration_very_long">1850</integer>
+    <integer name="anim_duration_long_medium">1000</integer>
+    <integer name="anim_duration_long">500</integer>
+    <integer name="anim_duration_medium">300</integer>
+    <integer name="otp_len">4</integer>
+    <dimen name="dialog_title">21sp</dimen>
+
+    <dimen name="ripple_radius">50dp</dimen>
     </resources>
 

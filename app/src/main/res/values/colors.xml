@@ -13,4 +13,7 @@
     <color name="colorRed">#FF080C</color>
     <color name="colorgreen">#21d92d</color>
 
+    <color name="product_color_1">#9b0254</color>
+    <color name="white_transparent">#6affffff</color>
+
 </resources>

@@ -12,7 +12,7 @@ interface SplashContract {
 
     interface Presenter : BasePresenter {
         val isUserLoggedIn: Boolean
-        val lang: String?
+        val getLang: String?
         fun updateLang(lang: String?)
         fun saveStringByKey(Key: String?, value: String?)
     }
