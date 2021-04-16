@@ -14,7 +14,7 @@ class ViewUtils {
     companion object
     {
         fun showToast(activity: Activity?, message: String?) {
-            showToast(activity, message)
+            showToast(activity,message,Toast.LENGTH_LONG)
         }
 
         fun showMaterialAlertDialog(activity: FragmentActivity?, title: String?, message: String?, positiveText: String, negativeText: String?,
@@ -27,22 +27,24 @@ class ViewUtils {
             dialog.show(activity!!.supportFragmentManager, "")
             return dialog
         }
-    }
 
-
-
-    fun showToast(activity: Activity, message: String, toastDuration: Int) {
-        if (activity.isFinishing) {
-            return
+        fun showToast(activity: Activity?, message: String?, toastDuration: Int) {
+            if (activity!!.isFinishing) {
+                return
+            }
+            val inflater = activity.layoutInflater
+            val layout: View = inflater.inflate(R.layout.toast, null)
+            val text = layout.findViewById<TextView>(R.id.text)
+            text.text = message
+            val toast = Toast(activity.applicationContext)
+            toast.setGravity(Gravity.CENTER, 0, 0)
+            toast.duration = toastDuration
+            toast.view = layout
+            toast.show()
         }
-        val inflater = activity.layoutInflater
-        val layout: View = inflater.inflate(R.layout.toast, null)
-        val text = layout.findViewById<TextView>(R.id.text)
-        text.text = message
-        val toast = Toast(activity.applicationContext)
-        toast.setGravity(Gravity.CENTER, 0, 0)
-        toast.duration = toastDuration
-        toast.view = layout
-        toast.show()
     }
+
+
+
+
 }

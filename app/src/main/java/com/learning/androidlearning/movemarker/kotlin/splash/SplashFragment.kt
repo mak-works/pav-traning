@@ -16,6 +16,7 @@ import android.widget.FrameLayout
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.learning.androidlearning.R
 
 
@@ -47,7 +48,6 @@ public class SplashFragment: Fragment() ,SplashContract.View {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         val activity: Activity? = getActivity()
-        activity?.finish()
         super.onActivityCreated(savedInstanceState)
         if (activity?.let { AppController.isOnline(it) } == true) {
             if (presenter != null) {
@@ -68,7 +68,6 @@ public class SplashFragment: Fragment() ,SplashContract.View {
             activity!!.finish()
         }
     }
-
 
 
     override fun showMessage(type: Int, message: String?) {
