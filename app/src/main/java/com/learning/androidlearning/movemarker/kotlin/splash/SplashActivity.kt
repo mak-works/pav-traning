@@ -37,7 +37,6 @@ class SplashActivity : AppCompatActivity() {
                 }
             }
 
-
             override fun onFailure(call: retrofit2.Call<List<UserData>>, t: Throwable) {
                 Log.d(TAG, "onFailure: "+t.message)
                 Toast.makeText( this@SplashActivity, "${t.message}", Toast.LENGTH_SHORT).show()

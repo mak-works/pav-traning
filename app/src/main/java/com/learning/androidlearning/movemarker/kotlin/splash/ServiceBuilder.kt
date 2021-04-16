@@ -6,12 +6,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ServiceBuilder {
-
-
     companion object {
-
         var BASE_URL = "https://jsonplaceholder.typicode.com/"
-
         fun create() : ApiInterface {
 
             val gson = GsonBuilder()
@@ -23,9 +19,6 @@ class ServiceBuilder {
                     .baseUrl(BASE_URL)
                     .build()
             return retrofit.create(ApiInterface::class.java)
-
         }
     }
-
-
 }
