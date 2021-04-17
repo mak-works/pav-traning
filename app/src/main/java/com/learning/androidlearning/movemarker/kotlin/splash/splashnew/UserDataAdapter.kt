@@ -15,7 +15,7 @@ class UserDataAdapter(val userData: List<UserData>): RecyclerView.Adapter<UserDa
     }
 
     override fun onBindViewHolder(holder: UserDataViewHolder, position: Int) {
-        holder.userId.text= userData.get(position).userId.toString()
+        holder.userId.text= userData!!.get(position).userId.toString()
         holder.id.text= userData.get(position).id.toString()
         holder.title.text= userData.get(position).title
         holder.completed.text= userData.get(position).completed.toString()
@@ -24,12 +24,10 @@ class UserDataAdapter(val userData: List<UserData>): RecyclerView.Adapter<UserDa
     override fun getItemCount(): Int {
        return userData.size
     }
-}
-
-class UserDataViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {
+   }
+     class UserDataViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {
      val userId:TextView = itemView.findViewById(R.id.tv_userId)
      val id:TextView = itemView.findViewById(R.id.tv_id)
      val title:TextView = itemView.findViewById(R.id.tv_title)
      val completed:TextView = itemView.findViewById(R.id.tv_completed)
-
-}
+ }

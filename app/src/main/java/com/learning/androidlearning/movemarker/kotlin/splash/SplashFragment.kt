@@ -16,7 +16,6 @@ import android.widget.FrameLayout
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.learning.androidlearning.R
 
 
@@ -46,13 +45,14 @@ public class SplashFragment: Fragment() ,SplashContract.View {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        val activity: Activity? = getActivity()
         super.onActivityCreated(savedInstanceState)
-        if (activity?.let { AppController.isOnline(it) } == true) {
+        if(activity?.let { AppController.isOnline(it) } == true)
+        {
             if (presenter != null) {
                 presenter!!.start()
             }
-        } else {
+        }
+        else {
             activity?.let { NetworkErrorActivity.startActivity(it) }
         }
     }
@@ -84,7 +84,7 @@ public class SplashFragment: Fragment() ,SplashContract.View {
                 isToast = false
                 posText = getString(R.string.retry)
                 message = getString(R.string.err_network)
-                positiveLis = object: CompactDialog.DialogListener {
+                positiveLis = object : CompactDialog.DialogListener {
                     override fun onClick(dialog: DialogFragment?) {
                         dialog!!.dismiss()
                         presenter!!.start()
@@ -152,22 +152,22 @@ public class SplashFragment: Fragment() ,SplashContract.View {
         ViewUtils.showMaterialAlertDialog(activity, getString(R.string.dia_version_title), getString(R.string.dia_version_description, versionName),
                 getString(R.string.update),
                 if (showVersionUpgradeDialog == 1) null else getString(R.string.later),
-                object :CompactDialog.DialogListener {
-                  override fun onClick(dialog: DialogFragment?) {
-                /*firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.VERSION_UPDATE_CLICK,
+                object : CompactDialog.DialogListener {
+                    override fun onClick(dialog: DialogFragment?) {
+                        /*firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.VERSION_UPDATE_CLICK,
                         AnalyticsConstants.Screen.SPLASH)*/
-                dialog!!.dismiss()
-                val appPackageName = activity!!.packageName // getPackageName() from Context or Activity object
-                try {
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
-                } catch (anfe: ActivityNotFoundException) {
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=$appPackageName")))
-                }
-                activity!!.finish()
-                apiCalled()
-            }
+                        dialog!!.dismiss()
+                        val appPackageName = activity!!.packageName // getPackageName() from Context or Activity object
+                        try {
+                            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
+                        } catch (anfe: ActivityNotFoundException) {
+                            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=$appPackageName")))
+                        }
+                        activity!!.finish()
+                        apiCalled()
+                    }
 
-        }, object : CompactDialog.DialogListener {
+                }, object : CompactDialog.DialogListener {
             override fun onClick(dialog: DialogFragment?) {
                 /* firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.VERSION_UPDATE_CLOSE,
                         AnalyticsConstants.Screen.SPLASH)*/
