@@ -1,4 +1,4 @@
-package com.learning.androidlearning.movemarker.kotlin.splash
+package com.learning.androidlearning.movemarker.kotlin.splash.splashnew
 
 data class UserData(
         var userId:Int,

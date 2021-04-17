@@ -78,7 +78,8 @@
 
     <string name="ok">Ok</string>
     <string name="info">Information</string>
-    <string name="font_robot" translatable="false"><!--Roboto-Regular.ttf-->JosefinSans-Regular.ttf</string>
+    <string name="font_robot" translatable="false"><!--Roboto-Regular.ttf-->
+        JosefinSans-Regular.ttf</string>
     <string name="retry">Retry</string>
     <string name="err_network">Network connection problem </string>
     <string name="Arabic" translatable="false">العربيّة</string>
@@ -87,9 +88,6 @@
     <string name="dia_version_description">New version(%1$s) is available in play store.</string>
     <string name="update">Update</string>
     <string name="later">Later</string>
-
-
-
 
 
 </resources>

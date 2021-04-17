@@ -18,12 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.kotlin.splash.BookActivity">
-
-        </activity>
+        <activity android:name=".movemarker.kotlin.splash.SplashActivity"></activity>
+        <activity android:name=".movemarker.kotlin.splash.BookActivity"></activity>
         <activity android:name=".movemarker.kotlin.splash.LoginActivity" />
         <activity android:name=".movemarker.kotlin.splash.NetworkErrorActivity" />
-        <activity android:name=".movemarker.kotlin.splash.SplashActivity" >
+        <activity android:name=".movemarker.kotlin.splash.splashnew.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,9 +36,7 @@
         <activity android:name=".movemarker.javalearning.FunctionalInterface" />
         <activity android:name=".movemarker.javalearning.ArrayListActivity" />
         <activity android:name=".movemarker.kotlin.KotlinFunctionsActivity" />
-        <activity android:name=".movemarker.kotlin.OopsActivity">
-
-        </activity>
+        <activity android:name=".movemarker.kotlin.OopsActivity"></activity>
         <activity android:name=".movemarker.kotlin.CollectionsActivity" />
         <activity android:name=".movemarker.kotlin.ArrayActivity" />
         <activity android:name=".movemarker.kotlin.KotlinBasicActivity" />

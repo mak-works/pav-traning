@@ -1,4 +1,4 @@
-package com.learning.androidlearning.movemarker.kotlin.splash
+package com.learning.androidlearning.movemarker.kotlin.splash.splashnew
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

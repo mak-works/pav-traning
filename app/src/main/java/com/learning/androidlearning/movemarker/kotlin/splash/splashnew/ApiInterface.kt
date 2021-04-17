@@ -1,8 +1,7 @@
-package com.learning.androidlearning.movemarker.kotlin.splash
+package com.learning.androidlearning.movemarker.kotlin.splash.splashnew
 
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface ApiInterface {
     @GET("todos")
