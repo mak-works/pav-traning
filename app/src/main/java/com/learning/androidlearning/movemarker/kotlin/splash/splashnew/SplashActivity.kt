@@ -7,33 +7,34 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.learning.androidlearning.R
+import com.learning.androidlearning.movemarker.kotlin.splash.LoginActivity
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(),SplashContract.SplashView {
     val TAG = "SplashActivity"
+
+    var presenter: SplashContract.SplashPresenter? = null
+    var rvUserData: RecyclerView? = null
+    val layoutManager = LinearLayoutManager(this@SplashActivity)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         val request = ServiceBuilder.create().getUserData()
-        val rvUserData: RecyclerView = findViewById(R.id.rv_userdata)
-        val layoutManager = LinearLayoutManager(applicationContext)
-        request.enqueue(object : retrofit2.Callback<List<UserData>> {
-            override fun onResponse(call: retrofit2.Call<List<UserData>>, response: retrofit2.Response<List<UserData>>) {
-                if (response.isSuccessful) {
-                    if(response.body()!= null)
-                    {
-                        Log.d(TAG, "onResponse: ")
-                        rvUserData.layoutManager = layoutManager
-                        val userDataAdapter = UserDataAdapter(response.body()!!)
-                        rvUserData.adapter = userDataAdapter
-                    }
+        rvUserData= findViewById(R.id.rv_userdata)
 
-                }
-            }
-            override fun onFailure(call: retrofit2.Call<List<UserData>>, t: Throwable) {
-                Log.d(TAG, "onFailure: "+t.message)
-                Toast.makeText( this@SplashActivity, "${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        });
+        presenter=SplashPresenter(this, SplashModel())
+        presenter?.let { it.requestData() }
+    }
+
+    override fun showData(userData: List<UserData>) {
+        rvUserData!!.layoutManager = layoutManager
+        val userDataAdapter = UserDataAdapter(userData)
+        val map: Map<Int, String> = userData.associate { Pair(it.id, it.title) }
+        rvUserData!!.adapter = userDataAdapter
+    }
+
+    override fun showfailure(errorThrowable: Throwable) {
+        val Toast=Toast.makeText(applicationContext,errorThrowable.message,Toast.LENGTH_SHORT)
+        Toast.show()
     }
 }

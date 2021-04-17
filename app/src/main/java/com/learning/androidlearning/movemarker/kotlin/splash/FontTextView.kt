@@ -27,15 +27,15 @@ class FontTextView : AppCompatTextView {
             @SuppressLint("CustomViewStyleable") val identity = context.obtainStyledAttributes(attrs,
                     R.styleable.defind_font)
             typeface = if (!TextUtils.isEmpty(identity.getString(R.styleable.defind_font_font_name))) {
-                Typeface.createFromAsset(context.assets, Constants().FONT_PATH
+                Typeface.createFromAsset(context.assets, Constants.FONT_PATH
                         .toString() + identity.getString(R.styleable.defind_font_font_name))
             } else {
-                Typeface.createFromAsset(context.assets, Constants().FONT_PATH
+                Typeface.createFromAsset(context.assets, Constants.FONT_PATH
                         + context.getString(R.string.font_robot))
             }
             identity.recycle()
         } else {
-            typeface = Typeface.createFromAsset(context.assets, Constants().FONT_PATH
+            typeface = Typeface.createFromAsset(context.assets, Constants.FONT_PATH
                     + context.getString(R.string.font_robot))
         }
     }

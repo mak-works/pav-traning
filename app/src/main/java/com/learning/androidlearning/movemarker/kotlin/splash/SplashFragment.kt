@@ -58,7 +58,7 @@ public class SplashFragment: Fragment() ,SplashContract.View {
     }
 
     fun nextGo() {
-        presenter!!.saveStringByKey(SessionKeys().NEED_TO_SHOW_NOTIFICATION_BANNER, "1")
+        presenter!!.saveStringByKey(SessionKeys.NEED_TO_SHOW_NOTIFICATION_BANNER, "1")
         if (!presenter!!.isUserLoggedIn) {
             activity?.let { LoginActivity.startActivity(it) }
         } else {
@@ -78,9 +78,9 @@ public class SplashFragment: Fragment() ,SplashContract.View {
         var positiveLis: CompactDialog.DialogListener? = null
         var isToast = false
         when (type) {
-            Constants().DIALOG_MESSAGE -> isToast = false
-            Constants().ERROR_RESPONSE,
-            Constants().ERROR_NETWORK -> {
+            Constants.DIALOG_MESSAGE -> isToast = false
+            Constants.ERROR_RESPONSE,
+            Constants.ERROR_NETWORK -> {
                 isToast = false
                 posText = getString(R.string.retry)
                 message = getString(R.string.err_network)
@@ -118,21 +118,21 @@ public class SplashFragment: Fragment() ,SplashContract.View {
             set.addTransition(right)
             set.addTransition(ChangeBounds())
             set.setOrdering(TransitionSet.ORDERING_TOGETHER)
-            set.setDuration(Constants().VIEW_ANIM_SPEED.toLong())
+            set.setDuration(Constants.VIEW_ANIM_SPEED.toLong())
             TransitionManager.go(mainScene, set)
             val english: CardView = mainLayout!!.findViewById(R.id.cv_eng)
             english.setOnClickListener {
-                AppController.getInstance().setLanguage(Constants().ENG)
+                AppController.getInstance().setLanguage(Constants.ENG)
                 //update the launguage english
-                presenter!!.updateLang(Constants().ENG)
+                presenter!!.updateLang(Constants.ENG)
                /* firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.LANGUAGE,
                         AnalyticsConstants.ACTIONS.LANGUAGE_ENGLISH_ACTION)*/
                 nextGo()
             }
             val arabic: CardView = mainLayout!!.findViewById(R.id.cv_arabic)
             arabic.setOnClickListener {
-                AppController.getInstance().setLanguage(Constants().ARABIC)
-                presenter!!.updateLang(Constants().ARABIC)
+                AppController.getInstance().setLanguage(Constants.ARABIC)
+                presenter!!.updateLang(Constants.ARABIC)
                 //update the launguage arabic
                 nextGo()
                /* firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.LANGUAGE,
