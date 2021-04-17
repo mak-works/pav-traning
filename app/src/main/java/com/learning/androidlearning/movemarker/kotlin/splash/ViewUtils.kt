@@ -43,8 +43,4 @@ class ViewUtils {
             toast.show()
         }
     }
-
-
-
-
 }

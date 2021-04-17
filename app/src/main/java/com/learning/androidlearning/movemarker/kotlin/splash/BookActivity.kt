@@ -19,6 +19,5 @@ class BookActivity : AppCompatActivity() {
             val intent= Intent(activity,LoginActivity::class.java)
             return intent
         }
-
     }
 }

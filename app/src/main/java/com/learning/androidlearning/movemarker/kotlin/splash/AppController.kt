@@ -15,7 +15,6 @@ public class AppController:Application() {
 
     companion object
     {
-
         fun isOnline(ctx: Context): Boolean {
             val connectivity = ctx.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
             if (connectivity != null) {
@@ -35,15 +34,8 @@ public class AppController:Application() {
         fun getInstance(): AppController {
             return INSTANCE
         }
-
-
-
-
     }
     fun setLanguage(language: String) {
         newLanguage = language
     }
-
-
-
 }

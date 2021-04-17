@@ -25,7 +25,6 @@ public class SplashFragment: Fragment() ,SplashContract.View {
     private var mainLayout: FrameLayout? = null
 
    /* private val firebaseAnalyticsEvents: FirebaseAnalyticsEvents? = null*/
-
     companion object {
         fun newInstance(): SplashFragment {
             return SplashFragment()
@@ -57,6 +56,7 @@ public class SplashFragment: Fragment() ,SplashContract.View {
             activity?.let { NetworkErrorActivity.startActivity(it) }
         }
     }
+
     fun nextGo() {
         presenter!!.saveStringByKey(SessionKeys().NEED_TO_SHOW_NOTIFICATION_BANNER, "1")
         if (!presenter!!.isUserLoggedIn) {
@@ -69,9 +69,7 @@ public class SplashFragment: Fragment() ,SplashContract.View {
         }
     }
 
-
     override fun showMessage(type: Int, message: String?) {
-
         var posText = getString(R.string.ok)
         val title = getString(R.string.info)
         var message=message;

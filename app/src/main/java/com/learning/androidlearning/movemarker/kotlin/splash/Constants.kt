@@ -9,6 +9,4 @@ class Constants {
     val VIEW_ANIM_SPEED = 518
     val ENG = "en"
     val ARABIC = "ar"
-
-
 }

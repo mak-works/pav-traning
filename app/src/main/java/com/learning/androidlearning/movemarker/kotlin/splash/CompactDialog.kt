@@ -11,7 +11,6 @@ import androidx.fragment.app.DialogFragment
 import com.learning.androidlearning.R
 
 public class CompactDialog: AppCompatDialogFragment(), View.OnClickListener {
-
     private val TITLE = "title"
     private val MESSAGE = "message"
     private val POSITIVE_TEXT = "pos_text"
@@ -48,7 +47,6 @@ public class CompactDialog: AppCompatDialogFragment(), View.OnClickListener {
 
         }
     }
-
 
     fun setClickListener(positiveLis: DialogListener?, negativeLis: DialogListener?) {
         positiveListener = positiveLis
