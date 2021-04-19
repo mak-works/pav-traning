@@ -78,7 +78,6 @@ public class CompactDialog: AppCompatDialogFragment(), View.OnClickListener {
         }
     }
 
-
     override fun onResume() {
         val window = dialog!!.window
         val size = Point()

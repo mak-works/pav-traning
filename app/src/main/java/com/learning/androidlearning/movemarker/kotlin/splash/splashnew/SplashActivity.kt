@@ -11,7 +11,6 @@ import com.learning.androidlearning.movemarker.kotlin.splash.LoginActivity
 
 class SplashActivity : AppCompatActivity(),SplashContract.SplashView {
     val TAG = "SplashActivity"
-
     var presenter: SplashContract.SplashPresenter? = null
     var rvUserData: RecyclerView? = null
     val layoutManager = LinearLayoutManager(this@SplashActivity)
@@ -19,18 +18,15 @@ class SplashActivity : AppCompatActivity(),SplashContract.SplashView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val request = ServiceBuilder.create().getUserData()
         rvUserData= findViewById(R.id.rv_userdata)
-
         presenter=SplashPresenter(this, SplashModel())
         presenter?.let { it.requestData() }
     }
 
     override fun showData(userData: List<UserData>) {
-        rvUserData!!.layoutManager = layoutManager
-        val userDataAdapter = UserDataAdapter(userData)
-        val map: Map<Int, String> = userData.associate { Pair(it.id, it.title) }
-        rvUserData!!.adapter = userDataAdapter
+        rvUserData?.layoutManager = layoutManager
+        val userDataAdapter = UserDataAdapter(userData,this@SplashActivity)
+        rvUserData?.adapter = userDataAdapter
     }
 
     override fun showfailure(errorThrowable: Throwable) {

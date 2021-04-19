@@ -105,6 +105,7 @@ class CollectionsActivity : AppCompatActivity() {
         var mutableMap = mutableMapOf<Int,String>(1 to "Pavithra",2 to "Jaya",3 to "Dhaarani")
         for(i in mutableMap)
         {
+
             Log.d(TAG, "printMapKey: "+i.key)
             Log.d(TAG, "printMapValues: "+i.value)
         }

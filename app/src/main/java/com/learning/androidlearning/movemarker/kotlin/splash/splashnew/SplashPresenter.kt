@@ -10,21 +10,17 @@ class SplashPresenter(view: SplashContract.SplashView,model:SplashModel) :Splash
         this.model=model
     }
     override fun requestData() {
-      model!!.getUserData(object:CallBack<List<UserData>>
+      model?.getUserData(object:CallBack<List<UserData>>
       {
           override fun success(objects: List<UserData>) {
-              view!!.showData(objects)
+              view?.showData(objects)
           }
 
-          override fun responseFailure(objects: List<UserData>) {
-
-          }
+          override fun responseFailure(objects: List<UserData>) {}
 
           override fun connectionFailure(errorThrowable: Throwable?) {
-              view!!.showfailure(errorThrowable!!)
+              view?.showfailure(errorThrowable!!)
           }
-
       });
-
     }
 }

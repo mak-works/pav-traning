@@ -13,8 +13,6 @@ class NetworkErrorActivity : AppCompatActivity() {
     }
     companion object
     {
-        fun startActivity(activity: Activity) {
-
-        }
+        fun startActivity(activity: Activity) {}
     }
 }

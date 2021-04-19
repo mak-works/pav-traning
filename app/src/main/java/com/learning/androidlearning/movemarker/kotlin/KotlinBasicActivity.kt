@@ -19,7 +19,6 @@ class KotlinBasicActivity : AppCompatActivity() {
     private var char: Char = 'a'
     var lastName: String? = null
 
-
     private var myNewValue = 50
     private var floatValNew = 5.5
     private var strValNew = "Pavithra S"
@@ -38,8 +37,6 @@ class KotlinBasicActivity : AppCompatActivity() {
         ifInsteadOfTernary()
         printForLoop()
         whenInsteadOfSwitch()
-
-
     }
 
     private fun printVaribales() {
@@ -62,6 +59,9 @@ class KotlinBasicActivity : AppCompatActivity() {
         Log.d(TAG, "printOperators: " + (intVal > intValneW));
         Log.d(TAG, "printOperators: " + (10.shl(5)));
         //All operators all like java except bitwise shl
+        //a?.lenguth and a!!.length
+        //? will return the null value if the values null otherwise it give the result
+        //!! will return the nullpointer exception if the value is null otherwise it gives the result
     }
 
     private fun typeConversion() {
@@ -126,10 +126,4 @@ class KotlinBasicActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
-
-
-
 }

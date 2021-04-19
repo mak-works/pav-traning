@@ -186,7 +186,6 @@ public class SplashFragment: Fragment() ,SplashContract.View {
     override fun setPresenter(presenter: SplashContract.Presenter?) {
         this.presenter = presenter
     }
-
 }
 
 
