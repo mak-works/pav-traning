@@ -31,11 +31,8 @@ class UserDataAdapter(val userData: List<UserData>,var context:Context): Recycle
         holder.title.text= userData.get(position).title
         holder.completed.text= userData.get(position).completed.toString()
         holder.userDataLayout.setOnClickListener(View.OnClickListener {
-            Log.d(TAG, "onBindViewHolder: " + userData.get(position).id)
             for (i in map) {
                 if (userData.get(position).id == i.key) {
-                    Log.d(TAG, "Map id : " + i.key)
-                    Log.d(TAG, "Map value: "+i.value)
                     val Toast=Toast.makeText(context,"Clicked id " +i.key+" and Clicked value " +i.value,Toast.LENGTH_LONG)
                     Toast.show();
                 }
