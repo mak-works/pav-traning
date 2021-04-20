@@ -7,6 +7,7 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
@@ -17,17 +18,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.synchronize.MemoryLeakActivity">
+        <activity android:name=".movemarker.kotlin.splash.SplashActivity"></activity>
+        <activity android:name=".movemarker.kotlin.splash.BookActivity"></activity>
+        <activity android:name=".movemarker.kotlin.splash.LoginActivity" />
+        <activity android:name=".movemarker.kotlin.splash.NetworkErrorActivity" />
+        <activity android:name=".movemarker.kotlin.splash.splashnew.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".movemarker.synchronize.SynchronizeThreadActivity">
-
-        </activity>
-        <activity android:name=".movemarker.maps.ShowBackgroundLocationActivity"></activity>
+        <activity android:name=".movemarker.roomdbnew.AddDriverActivity" />
+        <activity android:name=".movemarker.roomdbnew.RoomActivity" />
+        <activity android:name=".movemarker.roomdb.ViewDetailsActivity" />
+        <activity android:name=".movemarker.roomdb.AddDetailsActivity" />
+        <activity android:name=".movemarker.javalearning.FunctionalInterface" />
+        <activity android:name=".movemarker.javalearning.ArrayListActivity" />
+        <activity android:name=".movemarker.kotlin.KotlinFunctionsActivity" />
+        <activity android:name=".movemarker.kotlin.OopsActivity"></activity>
+        <activity android:name=".movemarker.kotlin.CollectionsActivity" />
+        <activity android:name=".movemarker.kotlin.ArrayActivity" />
+        <activity android:name=".movemarker.kotlin.KotlinBasicActivity" />
+        <activity android:name=".movemarker.animation.AnimationActivity" />
+        <activity android:name=".movemarker.maps.MapsMpveActivity" />
+        <activity android:name=".movemarker.ThreadPoolExecutor.ThreadPoolActivity" />
+        <activity android:name=".movemarker.synchronize.MemoryLeakActivity" />
+        <activity android:name=".movemarker.synchronize.SynchronizeThreadActivity" />
+        <activity android:name=".movemarker.maps.ShowBackgroundLocationActivity" />
         <activity android:name=".movemarker.taxiui.DashboardActivity" />
         <activity
             android:name=".movemarker.taxiui.ProfileActivity"

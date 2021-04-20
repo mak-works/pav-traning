@@ -2,22 +2,26 @@ package com.learning.androidlearning.movemarker.synchronize;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.learning.androidlearning.R;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class MemoryLeakActivity extends AppCompatActivity {
 
     private final String TAG = MemoryLeakActivity.class.getSimpleName();
     private ArrayList<Integer> integerArrayList = new ArrayList<Integer>();
+    private BlockingQueue<Runnable> readArrayListTaskQueue;
     private ThreadOne threadOne;
     private ThreadTwo threadTwo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +29,6 @@ public class MemoryLeakActivity extends AppCompatActivity {
         integerArrayList.add(1);
         integerArrayList.add(2);
         integerArrayList.add(3);
-        threadOne=new ThreadOne(this);
-        threadTwo=new ThreadTwo(this);
-        threadOne.start();
-        threadTwo.start();
     }
     synchronized public void printArrayList()
     {
@@ -80,6 +80,5 @@ public class MemoryLeakActivity extends AppCompatActivity {
         super.onDestroy();
         threadOne.interrupt();
         threadTwo.interrupt();
-
     }
 }

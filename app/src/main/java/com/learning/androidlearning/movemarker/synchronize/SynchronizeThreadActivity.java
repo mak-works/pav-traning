@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.TextView;
 
 import com.learning.androidlearning.R;
@@ -20,7 +21,7 @@ public class SynchronizeThreadActivity extends AppCompatActivity {
     private ArrayList<Integer> integerArrayList = new ArrayList<Integer>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {    
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synchronize_thread);
 
@@ -30,6 +31,7 @@ public class SynchronizeThreadActivity extends AppCompatActivity {
         thread1.start();
         thread2.start();
     }
+
     synchronized public void printArrayList()
     {
         for(int i=0;i<integerArrayList.size();i++)

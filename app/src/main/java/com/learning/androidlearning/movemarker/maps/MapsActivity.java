@@ -101,6 +101,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
+    public void markerMoveLocation()
+    {
+
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

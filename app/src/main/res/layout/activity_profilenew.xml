@@ -50,7 +50,6 @@
             android:id="@+id/cirimv_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/circle"
             android:src="@drawable/leaf"
             app:layout_constraintTop_toTopOf="@id/tv_profile">
         </de.hdodenhof.circleimageview.CircleImageView>
