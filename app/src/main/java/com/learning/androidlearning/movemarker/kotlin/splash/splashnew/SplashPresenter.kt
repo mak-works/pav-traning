@@ -1,6 +1,6 @@
 package com.learning.androidlearning.movemarker.kotlin.splash.splashnew
 
-class SplashPresenter(view: SplashContract.SplashView,model:SplashModel) :SplashContract.SplashPresenter  {
+class SplashPresenter(view: SplashContract.SplashView,model:SplashModel):SplashContract.SplashPresenter  {
 
     private var model: SplashModel? = null
     private var view: SplashContract.SplashView? = null

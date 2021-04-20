@@ -40,7 +40,7 @@ public class SplashFragment: Fragment() ,SplashContract.View {
         val splashRootLay = view.findViewById<FrameLayout>(R.id.ll_splash)
         TransitionManager.beginDelayedTransition(splashRootLay)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            activity!!.window.statusBarColor = resources.getColor(R.color.black, activity!!.theme)
+            activity?.window?.statusBarColor = resources.getColor(R.color.black, activity?.theme)
         }
     }
 
@@ -48,8 +48,8 @@ public class SplashFragment: Fragment() ,SplashContract.View {
         super.onActivityCreated(savedInstanceState)
         if(activity?.let { AppController.isOnline(it) } == true)
         {
-            if (presenter != null) {
-                presenter!!.start()
+            if (presenter!= null) {
+                presenter?.start()
             }
         }
         else {
@@ -58,14 +58,14 @@ public class SplashFragment: Fragment() ,SplashContract.View {
     }
 
     fun nextGo() {
-        presenter!!.saveStringByKey(SessionKeys.NEED_TO_SHOW_NOTIFICATION_BANNER, "1")
-        if (!presenter!!.isUserLoggedIn) {
+        presenter?.saveStringByKey(SessionKeys.NEED_TO_SHOW_NOTIFICATION_BANNER, "1")
+        if (presenter?.isUserLoggedIn == true) {
             activity?.let { LoginActivity.startActivity(it) }
         } else {
             activity?.let { BookActivity.startActivity(it) }
         }
         if (activity != null) {
-            activity!!.finish()
+            activity?.finish()
         }
     }
 
@@ -86,8 +86,8 @@ public class SplashFragment: Fragment() ,SplashContract.View {
                 message = getString(R.string.err_network)
                 positiveLis = object : CompactDialog.DialogListener {
                     override fun onClick(dialog: DialogFragment?) {
-                        dialog!!.dismiss()
-                        presenter!!.start()
+                        dialog?.dismiss()
+                        presenter?.start()
                     }
                 }
 
@@ -103,11 +103,11 @@ public class SplashFragment: Fragment() ,SplashContract.View {
     }
 
     override fun apiCalled() {
-        val lang: String? = presenter!!.getLang
+        val lang: String? = presenter?.getLang
         if (TextUtils.isEmpty(lang)) {
            /* firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.LANGUAGE,
                     AnalyticsConstants.Screen.SPLASH)*/
-            mainLayout!!.visibility = View.VISIBLE
+            mainLayout?.visibility = View.VISIBLE
             val mainScene: Scene = Scene.getSceneForLayout(mainLayout, R.layout.view_infl_splash, context)
             val set = TransitionSet()
             val left = Slide(Gravity.START)
@@ -120,19 +120,19 @@ public class SplashFragment: Fragment() ,SplashContract.View {
             set.setOrdering(TransitionSet.ORDERING_TOGETHER)
             set.setDuration(Constants.VIEW_ANIM_SPEED.toLong())
             TransitionManager.go(mainScene, set)
-            val english: CardView = mainLayout!!.findViewById(R.id.cv_eng)
-            english.setOnClickListener {
+            val english: CardView? = mainLayout?.findViewById(R.id.cv_eng)
+            english?.setOnClickListener {
                 AppController.getInstance().setLanguage(Constants.ENG)
                 //update the launguage english
-                presenter!!.updateLang(Constants.ENG)
+                presenter?.updateLang(Constants.ENG)
                /* firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.LANGUAGE,
                         AnalyticsConstants.ACTIONS.LANGUAGE_ENGLISH_ACTION)*/
                 nextGo()
             }
-            val arabic: CardView = mainLayout!!.findViewById(R.id.cv_arabic)
-            arabic.setOnClickListener {
+            val arabic: CardView? = mainLayout?.findViewById(R.id.cv_arabic)
+            arabic?.setOnClickListener {
                 AppController.getInstance().setLanguage(Constants.ARABIC)
-                presenter!!.updateLang(Constants.ARABIC)
+                presenter?.updateLang(Constants.ARABIC)
                 //update the launguage arabic
                 nextGo()
                /* firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.LANGUAGE,
@@ -156,14 +156,14 @@ public class SplashFragment: Fragment() ,SplashContract.View {
                     override fun onClick(dialog: DialogFragment?) {
                         /*firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.VERSION_UPDATE_CLICK,
                         AnalyticsConstants.Screen.SPLASH)*/
-                        dialog!!.dismiss()
-                        val appPackageName = activity!!.packageName // getPackageName() from Context or Activity object
+                        dialog?.dismiss()
+                        val appPackageName = activity?.packageName // getPackageName() from Context or Activity object
                         try {
                             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
                         } catch (anfe: ActivityNotFoundException) {
                             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=$appPackageName")))
                         }
-                        activity!!.finish()
+                        activity?.finish()
                         apiCalled()
                     }
 
@@ -171,9 +171,9 @@ public class SplashFragment: Fragment() ,SplashContract.View {
             override fun onClick(dialog: DialogFragment?) {
                 /* firebaseAnalyticsEvents.clickAction(AnalyticsConstants.ACTIONS.VERSION_UPDATE_CLOSE,
                         AnalyticsConstants.Screen.SPLASH)*/
-                dialog!!.dismiss()
+                dialog?.dismiss()
                 if (showVersionUpgradeDialog == 1) {
-                    activity!!.finish()
+                    activity?.finish()
                 } else {
                     apiCalled()
                 }

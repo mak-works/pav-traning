@@ -13,12 +13,11 @@ class ArrayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_array)
-
         printArray();
-
     }
 
     private fun printArray() {
+
         //printing array
         for(i in arrayTypeOne.indices)
         {
@@ -29,11 +28,14 @@ class ArrayActivity : AppCompatActivity() {
         {
             Log.d(TAG, "printArrayTwo: "+arrayTypeTwo[i])
         }
+
         //getting array
+
         Log.d(TAG, "get value"+arrayTypeOne.get(3))
         Log.d(TAG, "get value: "+arrayTypeTwo[2])
 
         //setting array
+
         arrayTypeOne.set(3,5);
         arrayTypeTwo[2]=50
 
@@ -47,7 +49,6 @@ class ArrayActivity : AppCompatActivity() {
             Log.d(TAG, "printArray after setting: "+arrayTypeTwo[i])
         }
 
-
         //print the array with position
         for((index,value) in arrayTypeOne.withIndex())
         {
@@ -56,5 +57,4 @@ class ArrayActivity : AppCompatActivity() {
         }
         //Collection store multiple data type
     }
-
 }

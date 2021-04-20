@@ -44,7 +44,6 @@ public class CompactDialog: AppCompatDialogFragment(), View.OnClickListener {
             val fragment = CompactDialog()
             fragment.arguments = args
             return fragment
-
         }
     }
 
@@ -59,8 +58,8 @@ public class CompactDialog: AppCompatDialogFragment(), View.OnClickListener {
         positiveBtn = view.findViewById(R.id.tv_dia_done)
         negativeCv = view.findViewById(R.id.cv_neg)
         negativeBtn = view.findViewById(R.id.tv_neg)
-        negativeCv!!.setOnClickListener(this)
-        positiveCv!!.setOnClickListener(this)
+        negativeCv?.setOnClickListener(this)
+        positiveCv?.setOnClickListener(this)
         return view
     }
 
@@ -68,37 +67,37 @@ public class CompactDialog: AppCompatDialogFragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         val args = arguments
         if (args != null) {
-            message!!.text = args.getString(CompactDialog().MESSAGE)
-            positiveBtn!!.text=args.getString(CompactDialog().POSITIVE_TEXT)
+            message?.text = args.getString(CompactDialog().MESSAGE)
+            positiveBtn?.text=args.getString(CompactDialog().POSITIVE_TEXT)
             if (TextUtils.isEmpty(args.getString(CompactDialog().NEGATIVE_TEXT))) {
-                negativeCv!!.visibility = View.GONE
+                negativeCv?.visibility = View.GONE
             } else {
-                negativeBtn!!.text = args.getString(CompactDialog().NEGATIVE_TEXT)
+                negativeBtn?.text = args.getString(CompactDialog().NEGATIVE_TEXT)
             }
         }
     }
 
     override fun onResume() {
-        val window = dialog!!.window
+        val window = dialog?.window
         val size = Point()
         // Store dimensions of the screen in `size`
-        val display = window.windowManager.defaultDisplay
-        display.getSize(size)
+        val display = window?.windowManager?.defaultDisplay
+        display?.getSize(size)
         // Set the width of the dialog proportional to 75% of the screen width
-        window.setLayout((size.x * 0.85).toInt(), WindowManager.LayoutParams.WRAP_CONTENT)
-        window.setGravity(Gravity.CENTER)
+        window?.setLayout((size.x * 0.85).toInt(), WindowManager.LayoutParams.WRAP_CONTENT)
+        window?.setGravity(Gravity.CENTER)
         super.onResume()
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.cv_ok -> if (positiveListener != null) {
-                positiveListener!!.onClick(this)
+                positiveListener?.onClick(this)
             } else {
                 dismiss()
             }
             R.id.cv_neg -> if (negativeListener != null) {
-                negativeListener!!.onClick(this)
+                negativeListener?.onClick(this)
             } else {
                 dismiss()
             }
@@ -108,5 +107,4 @@ public class CompactDialog: AppCompatDialogFragment(), View.OnClickListener {
     interface DialogListener {
         fun onClick(dialog: DialogFragment?)
     }
-
 }
