@@ -13,21 +13,17 @@ import com.google.gson.JsonArray
 import com.learning.androidlearning.R
 
 
-class UserDataAdapter(val userData: List<UserData>, var context: Context) : RecyclerView.Adapter<UserDataViewHolder>() {
+class UserDataAdapter(private val userData: List<UserData>, val context: Context) : RecyclerView.Adapter<UserDataViewHolder>() {
     val TAG = "UserDataAdapter"
 
-    init {
-        this.context = context;
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserDataViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_userdata, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.list_item_userdata, parent, false)
         return UserDataViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: UserDataViewHolder, position: Int) {
         val map: Map<Int, String> = userData.associate { Pair(it.id, it.title) }
-        val userItem=userData[position];
+        val userItem = userData[position]
         holder.userId.text = userItem.userId.toString()
         holder.id.text = userItem.id.toString()
         holder.title.text = userData[position].title
