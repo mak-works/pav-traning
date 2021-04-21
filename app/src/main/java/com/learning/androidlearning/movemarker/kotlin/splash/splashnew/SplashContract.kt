@@ -13,5 +13,4 @@ interface SplashContract {
     interface SplashModel {
         fun getUserData(callBack: CallBack<List<UserData>>);
     }
-
 }

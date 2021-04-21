@@ -13,24 +13,26 @@ class SplashActivity : AppCompatActivity(), SplashContract.SplashView {
     val TAG = "SplashActivity"
     var presenter: SplashContract.SplashPresenter? = null
     var rvUserData: RecyclerView? = null
-    val layoutManager = LinearLayoutManager(this@SplashActivity)
+    var layoutManager:LinearLayoutManager?=null
+    var userDataAdapter:UserDataAdapter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        layoutManager = LinearLayoutManager(this@SplashActivity)
         rvUserData = findViewById(R.id.rv_userdata)
         presenter = SplashPresenter(this, SplashModel())
-        presenter?.let { it.requestData() }
+        presenter?.requestData()
     }
 
     override fun showData(userData: List<UserData>) {
         rvUserData?.layoutManager = layoutManager
-        val userDataAdapter = UserDataAdapter(userData, this@SplashActivity)
+        userDataAdapter = UserDataAdapter(userData, this@SplashActivity)
         rvUserData?.adapter = userDataAdapter
     }
 
     override fun showfailure(errorThrowable: Throwable) {
-        val Toast = Toast.makeText(applicationContext, errorThrowable.message, Toast.LENGTH_SHORT)
-        Toast.show()
+        val toast = Toast.makeText(applicationContext, errorThrowable.message, Toast.LENGTH_SHORT)
+        toast.show()
     }
 }

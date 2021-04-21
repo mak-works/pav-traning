@@ -1,25 +1,18 @@
 package com.learning.androidlearning.movemarker.kotlin.splash.splashnew
 
-class SplashPresenter(view: SplashContract.SplashView, model: SplashModel) : SplashContract.SplashPresenter {
-
-    private var model: SplashModel? = null
-    private var view: SplashContract.SplashView? = null
-
-    init {
-        this.view = view;
-        this.model = model
-    }
+class SplashPresenter(private var view: SplashContract.SplashView, private var model: SplashModel) : SplashContract.SplashPresenter {
 
     override fun requestData() {
-        model?.getUserData(object : CallBack<List<UserData>> {
+        model.getUserData(object : CallBack<List<UserData>> {
+
             override fun success(objects: List<UserData>) {
-                view?.showData(objects)
+                view.showData(objects)
             }
 
             override fun responseFailure(objects: List<UserData>) {}
 
             override fun connectionFailure(errorThrowable: Throwable?) {
-                view?.showfailure(errorThrowable!!)
+                view.showfailure(errorThrowable!!)
             }
         });
     }

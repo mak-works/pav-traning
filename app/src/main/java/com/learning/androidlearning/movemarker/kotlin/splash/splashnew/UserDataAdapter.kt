@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -15,9 +16,10 @@ import com.learning.androidlearning.R
 
 class UserDataAdapter(private val userData: List<UserData>, val context: Context) : RecyclerView.Adapter<UserDataViewHolder>() {
     val TAG = "UserDataAdapter"
+    val layoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserDataViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.list_item_userdata, parent, false)
+        val view = layoutInflater.inflate(R.layout.list_item_userdata, parent, false)
         return UserDataViewHolder(view)
     }
 
@@ -29,8 +31,8 @@ class UserDataAdapter(private val userData: List<UserData>, val context: Context
         holder.title.text = userData[position].title
         holder.completed.text = userData[position].completed.toString()
         holder.userDataLayout.setOnClickListener {
-            Toast.makeText(context, "Clicked id " + userData[position].id +
-                    " and Clicked value " + map[userData[position].id], Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Clicked id " + map[userData[position].id] +
+                    " and Clicked value " + map[userData[position].title], Toast.LENGTH_LONG).show()
         }
     }
 
@@ -44,5 +46,5 @@ class UserDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val id: TextView = itemView.findViewById(R.id.tv_id)
     val title: TextView = itemView.findViewById(R.id.tv_title)
     val completed: TextView = itemView.findViewById(R.id.tv_completed)
-    val userDataLayout: ConstraintLayout = itemView.findViewById(R.id.userdata_layout)
+    val userDataLayout: LinearLayout = itemView.findViewById(R.id.userdata_layout)
 }

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@+id/userdata_layout"
-    android:layout_margin="@dimen/material_10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/recyclerview_background"
     android:orientation="vertical">
 
 
@@ -26,47 +24,44 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_userId"
                 android:text="0001"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:maxLines="1"
-                android:padding="1dp"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
 
             <TextView
-                android:id="@+id/tv_id"
                 android:text="Lorem ipsum"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:maxLines="1"
-                android:padding="1dp"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/tv_title"
-                android:text="Lorem ipsum"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:maxLines="1"
-                android:padding="1dp"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
             <TextView
                 android:text="Lorem ipsum"
-                android:id="@+id/tv_completed"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:maxLines="1"
-                android:padding="1dp"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:text="Lorem ipsum"
+                android:id="@+id/tv_favourite"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -105,7 +100,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFC0CB"/>
+            android:background="#D3D3D3"/>
 
     </LinearLayout>
 

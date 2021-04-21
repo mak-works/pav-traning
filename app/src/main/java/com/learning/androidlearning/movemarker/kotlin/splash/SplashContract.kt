@@ -16,6 +16,10 @@ interface SplashContract {
         fun updateLang(lang: String?)
         fun saveStringByKey(Key: String?, value: String?)
     }
+    interface Model
+    {
+
+    }
 
 
 }
