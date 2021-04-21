@@ -13,10 +13,11 @@ import com.google.gson.JsonArray
 import com.learning.androidlearning.R
 
 
-class UserDataAdapter(val userData: List<UserData>,var context:Context): RecyclerView.Adapter<UserDataViewHolder>(){
+class UserDataAdapter(val userData: List<UserData>, var context: Context) : RecyclerView.Adapter<UserDataViewHolder>() {
     val TAG = "UserDataAdapter"
+
     init {
-        this.context=context;
+        this.context = context;
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserDataViewHolder {
@@ -26,28 +27,26 @@ class UserDataAdapter(val userData: List<UserData>,var context:Context): Recycle
 
     override fun onBindViewHolder(holder: UserDataViewHolder, position: Int) {
         val map: Map<Int, String> = userData.associate { Pair(it.id, it.title) }
-        holder.userId.text= userData.get(position).userId.toString()
-        holder.id.text= userData.get(position).id.toString()
-        holder.title.text= userData.get(position).title
-        holder.completed.text= userData.get(position).completed.toString()
-        holder.userDataLayout.setOnClickListener(View.OnClickListener {
-            for (i in map) {
-                if (userData.get(position).id == i.key) {
-                    val Toast=Toast.makeText(context,"Clicked id " +i.key+" and Clicked value " +i.value,Toast.LENGTH_LONG)
-                    Toast.show();
-                }
-            }
-        })
+        val userItem=userData[position];
+        holder.userId.text = userItem.userId.toString()
+        holder.id.text = userItem.id.toString()
+        holder.title.text = userData[position].title
+        holder.completed.text = userData[position].completed.toString()
+        holder.userDataLayout.setOnClickListener {
+            Toast.makeText(context, "Clicked id " + userData[position].id +
+                    " and Clicked value " + map[userData[position].id], Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun getItemCount(): Int {
-       return userData.size
+        return userData.size
     }
-  }
-     class UserDataViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-     val userId:TextView = itemView.findViewById(R.id.tv_userId)
-     val id:TextView = itemView.findViewById(R.id.tv_id)
-     val title:TextView = itemView.findViewById(R.id.tv_title)
-     val completed:TextView = itemView.findViewById(R.id.tv_completed)
-     val userDataLayout:ConstraintLayout=itemView.findViewById(R.id.userdata_layout)
-     }
+}
+
+class UserDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val userId: TextView = itemView.findViewById(R.id.tv_userId)
+    val id: TextView = itemView.findViewById(R.id.tv_id)
+    val title: TextView = itemView.findViewById(R.id.tv_title)
+    val completed: TextView = itemView.findViewById(R.id.tv_completed)
+    val userDataLayout: ConstraintLayout = itemView.findViewById(R.id.userdata_layout)
+}
