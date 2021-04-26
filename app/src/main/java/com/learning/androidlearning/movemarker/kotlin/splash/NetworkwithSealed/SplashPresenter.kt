@@ -22,5 +22,3 @@ class SplashPresenter(private var view: SplashContract.SplashView,private var sp
         }*/
     }
 }
-
-

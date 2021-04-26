@@ -3,7 +3,7 @@ package com.learning.androidlearning.movemarker.kotlin.splash.splashnew
 interface SplashContract {
     interface SplashView {
         fun showData(userData: List<UserData>);
-        fun showfailure(errorThrowable: Throwable)
+        fun showFailure(errorThrowable: Throwable)
     }
 
     interface SplashPresenter {

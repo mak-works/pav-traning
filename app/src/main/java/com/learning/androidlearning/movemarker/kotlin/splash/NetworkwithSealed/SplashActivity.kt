@@ -38,5 +38,4 @@ class SplashActivity : AppCompatActivity(),SplashContract.SplashView {
         val toast = Toast.makeText(applicationContext, errorThrowable.message, Toast.LENGTH_SHORT)
         toast.show()
     }
-
 }

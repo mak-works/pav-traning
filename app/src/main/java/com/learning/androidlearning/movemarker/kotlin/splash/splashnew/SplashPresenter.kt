@@ -5,18 +5,16 @@ class SplashPresenter(private var view: SplashContract.SplashView, private var m
     override fun requestData() {
         model.getUserData(object : CallBack<List<UserData>> {
             override fun success(objects: List<UserData>) {
-                TODO("Not yet implemented")
+               view.showData(objects)
             }
 
             override fun responseFailure(objects: List<UserData>) {
                 TODO("Not yet implemented")
             }
 
-            override fun connectionFailure(errorThrowable: Throwable?) {
-                TODO("Not yet implemented")
+            override fun connectionFailure(errorThrowable: Throwable) {
+                view.showFailure(errorThrowable)
             }
-
-
         });
     }
 }

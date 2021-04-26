@@ -7,4 +7,3 @@ interface ApiInterface {
    @GET("todos")
    fun getUserData(): Call<List<UserData>>
 }
-
