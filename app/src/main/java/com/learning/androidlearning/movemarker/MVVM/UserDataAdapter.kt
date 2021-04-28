@@ -1,4 +1,4 @@
-package com.learning.androidlearning.movemarker.kotlin.splash.NetworkwithSealed
+package com.learning.androidlearning.movemarker.MVVM
 
 import android.content.Context
 import android.util.Log
@@ -29,18 +29,15 @@ class UserDataAdapter(private val userData: List<UserData>, val context: Context
 
     override fun onBindViewHolder(holder: UserDataViewHolder, position: Int) {
         val map: Map<Int, String> = userData.associate { Pair(it.id, it.title) }
-        val userItem = userData[position]
-        holder.tvUserId.text = userItem.userId.toString()
-        holder.tvId.text = userItem.id.toString()
-        holder.tvTitle.text = userData[position].title
-        holder.tvCompleted.text = userData[position].completed.toString()
+        holder.bind(userData[position])
         holder.userDataLayout.setOnClickListener {
             Toast.makeText(context, "Clicked id " + map[userData[position].id] +
                     " and Clicked value " + map[userData[position].title], Toast.LENGTH_LONG).show()
         }
         Glide.with(context)
                 .load(url)
-                .into(holder.imvUserImage)
+                .into(holder.userImage)
+
     }
 
     override fun getItemCount(): Int {
@@ -54,5 +51,12 @@ class UserDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
     val tvCompleted: TextView = itemView.findViewById(R.id.tv_completed)
     val userDataLayout: CardView = itemView.findViewById(R.id.userdata_layout)
-    val imvUserImage: ImageView = itemView.findViewById(R.id.imv_user_image)
+    val userImage: ImageView = itemView.findViewById(R.id.imv_user_image)
+
+    fun bind(user: UserData) {
+        tvUserId.text = user.userId.toString()
+        tvId.text = user.id.toString()
+        tvTitle.text = user.title
+        tvCompleted.text = user.completed.toString()
+    }
 }

@@ -11,7 +11,7 @@ class OopsActivity : AppCompatActivity() {
      var varOne=10;
      var varTwo=20;
      var varThree=30
-    var TAG="OopsActivity"
+     var TAG="OopsActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +46,6 @@ class OopsActivity : AppCompatActivity() {
                 varThree=varOne+varTwo;
                 Log.d(TAG, "add nested class: "+varThree)
             }
-
         }
     }
 

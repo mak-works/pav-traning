@@ -29,6 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".movemarker.MVVM.SplashActivity" >
+
+        </activity>
         <activity android:name=".movemarker.roomdbnew.AddDriverActivity" />
         <activity android:name=".movemarker.roomdbnew.RoomActivity" />
         <activity android:name=".movemarker.roomdb.ViewDetailsActivity" />

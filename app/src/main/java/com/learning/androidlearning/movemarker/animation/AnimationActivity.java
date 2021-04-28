@@ -33,10 +33,7 @@ public class AnimationActivity extends AppCompatActivity {
         ImageView animateImageThree = findViewById(R.id.animate_image_three);
         ImageView animateImageFour = findViewById(R.id.animate_image_four);
         animate_equal = findViewById(R.id.animate_equal);
-
-
         animateImageThree.setVisibility(View.INVISIBLE);
-
         Animatable animatable = (Animatable) animateImageOne.getDrawable();
         animatable.start();
         Animatable animatableTwo = (Animatable) animateImageTwo.getDrawable();
@@ -62,7 +59,6 @@ public class AnimationActivity extends AppCompatActivity {
                 animateImageFour.setImageDrawable(drawable);
                 drawable.start();
                 isEqual = !isEqual;
-
             }
         });
     }

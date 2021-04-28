@@ -1,21 +1,22 @@
 package com.learning.androidlearning.movemarker.kotlin.splash.splashnew
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.JsonArray
+import com.bumptech.glide.Glide
 import com.learning.androidlearning.R
 
 
 class UserDataAdapter(private val userData: List<UserData>, val context: Context) : RecyclerView.Adapter<UserDataViewHolder>() {
     val TAG = "UserDataAdapter"
+    val url="https://www.gstatic.com/webp/gallery3/2.png"
     val layoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserDataViewHolder {
@@ -26,14 +27,17 @@ class UserDataAdapter(private val userData: List<UserData>, val context: Context
     override fun onBindViewHolder(holder: UserDataViewHolder, position: Int) {
         val map: Map<Int, String> = userData.associate { Pair(it.id, it.title) }
         val userItem = userData[position]
-        holder.userId.text = userItem.userId.toString()
-        holder.id.text = userItem.id.toString()
-        holder.title.text = userData[position].title
-        holder.completed.text = userData[position].completed.toString()
+        holder.tvUserId.text = userItem.userId.toString()
+        holder.tvId.text = userItem.id.toString()
+        holder.tvTitle.text = userData[position].title
+        holder.tvCompleted.text = userData[position].completed.toString()
         holder.userDataLayout.setOnClickListener {
             Toast.makeText(context, "Clicked id " + map[userData[position].id] +
                     " and Clicked value " + map[userData[position].title], Toast.LENGTH_LONG).show()
         }
+        Glide.with(context)
+                .load(url)
+                .into(holder.imvUserImage)
     }
 
     override fun getItemCount(): Int {
@@ -42,9 +46,10 @@ class UserDataAdapter(private val userData: List<UserData>, val context: Context
 }
 
 class UserDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val userId: TextView = itemView.findViewById(R.id.tv_userId)
-    val id: TextView = itemView.findViewById(R.id.tv_id)
-    val title: TextView = itemView.findViewById(R.id.tv_title)
-    val completed: TextView = itemView.findViewById(R.id.tv_completed)
-    val userDataLayout: LinearLayout = itemView.findViewById(R.id.userdata_layout)
+    val tvUserId: TextView = itemView.findViewById(R.id.tv_userId)
+    val tvId: TextView = itemView.findViewById(R.id.tv_id)
+    val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
+    val tvCompleted: TextView = itemView.findViewById(R.id.tv_completed)
+    val userDataLayout: CardView = itemView.findViewById(R.id.userdata_layout)
+    val imvUserImage:ImageView= itemView.findViewById(R.id.imv_user_image)
 }
