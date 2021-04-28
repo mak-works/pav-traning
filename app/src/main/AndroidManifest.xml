@@ -30,7 +30,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".movemarker.MVVM.SplashActivity" >
-
         </activity>
         <activity android:name=".movemarker.roomdbnew.AddDriverActivity" />
         <activity android:name=".movemarker.roomdbnew.RoomActivity" />
@@ -73,5 +72,4 @@
             android:enabled="true"
             android:exported="true" />
     </application>
-
 </manifest>

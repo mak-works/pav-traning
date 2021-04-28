@@ -23,7 +23,6 @@ public class AnimationActivity extends AppCompatActivity {
     Button animate_equal;
     AnimationActivity animationActivity;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +45,6 @@ public class AnimationActivity extends AppCompatActivity {
                     Animatable animatableThree = (Animatable) animateImageThree.getDrawable();
                     animatableThree.start();
                 }
-
             }
         });
         animate_equal.setOnClickListener(new View.OnClickListener() {
