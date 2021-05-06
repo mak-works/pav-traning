@@ -1,12 +1,8 @@
-package com.learning.androidlearning.movemarker.MVVM
+package com.learning.androidlearning.movemarker.kotlin.MVVM
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.learning.androidlearning.movemarker.kotlin.splash.NetworkwithSealed.UserResponse
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Response
 

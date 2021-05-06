@@ -18,19 +18,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLearning">
-        <activity android:name=".movemarker.kotlin.splash.SplashActivity"></activity>
-        <activity android:name=".movemarker.kotlin.splash.BookActivity"></activity>
-        <activity android:name=".movemarker.kotlin.splash.LoginActivity" />
-        <activity android:name=".movemarker.kotlin.splash.NetworkErrorActivity" />
-        <activity android:name=".movemarker.kotlin.splash.splashnew.SplashActivity">
+        <activity android:name=".movemarker.kotlin.Coroutine.CoroutineActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".movemarker.MVVM.SplashActivity" >
+        <activity android:name=".movemarker.kotlin.splash.SplashActivity" />
+        <activity android:name=".movemarker.kotlin.splash.BookActivity" />
+        <activity android:name=".movemarker.kotlin.splash.LoginActivity" />
+        <activity android:name=".movemarker.kotlin.splash.NetworkErrorActivity" />
+        <activity android:name=".movemarker.kotlin.splash.splashnew.SplashActivity">
+
         </activity>
+        <activity android:name=".movemarker.kotlin.MVVM.SplashActivity" />
         <activity android:name=".movemarker.roomdbnew.AddDriverActivity" />
         <activity android:name=".movemarker.roomdbnew.RoomActivity" />
         <activity android:name=".movemarker.roomdb.ViewDetailsActivity" />
@@ -38,7 +40,7 @@
         <activity android:name=".movemarker.javalearning.FunctionalInterface" />
         <activity android:name=".movemarker.javalearning.ArrayListActivity" />
         <activity android:name=".movemarker.kotlin.KotlinFunctionsActivity" />
-        <activity android:name=".movemarker.kotlin.OopsActivity"></activity>
+        <activity android:name=".movemarker.kotlin.OopsActivity" />
         <activity android:name=".movemarker.kotlin.CollectionsActivity" />
         <activity android:name=".movemarker.kotlin.ArrayActivity" />
         <activity android:name=".movemarker.kotlin.KotlinBasicActivity" />
@@ -72,4 +74,5 @@
             android:enabled="true"
             android:exported="true" />
     </application>
+
 </manifest>

@@ -1,4 +1,4 @@
-package com.learning.androidlearning.movemarker.MVVM
+package com.learning.androidlearning.movemarker.kotlin.MVVM
 
 import com.google.gson.annotations.SerializedName
 

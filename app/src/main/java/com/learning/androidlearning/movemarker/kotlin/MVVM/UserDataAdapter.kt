@@ -1,19 +1,15 @@
-package com.learning.androidlearning.movemarker.MVVM
+package com.learning.androidlearning.movemarker.kotlin.MVVM
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.gson.JsonArray
 import com.learning.androidlearning.R
 
 

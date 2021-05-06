@@ -1,4 +1,4 @@
-package com.learning.androidlearning.movemarker.MVVM
+package com.learning.androidlearning.movemarker.kotlin.MVVM
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
     companion object {
