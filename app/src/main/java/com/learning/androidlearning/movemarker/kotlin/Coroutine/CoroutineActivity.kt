@@ -20,7 +20,6 @@ class CoroutineActivity : AppCompatActivity() {
     var userDataViewModel: ApiUserViewModel?=null
     var appController:AppController?=null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coroutine)

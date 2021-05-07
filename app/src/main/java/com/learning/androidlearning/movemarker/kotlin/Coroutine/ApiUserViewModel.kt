@@ -23,27 +23,19 @@ class ApiUserViewModel(private var appController: AppController):AndroidViewMode
    {
       viewModelScope.launch {
          try {
-            Log.d(TAG, "fetchData: ")
-
-                coroutineScope {
-                   Log.d(TAG, "fetchData: ----------------")
-
+               coroutineScope {
                    apiInterface=appController.appcontollerInstance.getApiInterface()
                    val userDataDeferred=async { apiInterface?.getUsers() }
                    val moreUserDataDeferred=async {apiInterface?.getMoreUsers() }
 
-
-                   Log.d(TAG, "fetchData: ******")
-
                    val userData=userDataDeferred.await()
                    val moreUserData=moreUserDataDeferred.await()
 
-                   Log.d(TAG, "fetchData: ++++++++")
                    val allUserData=mutableListOf<ApiUser>()
                    userData?.let { allUserData.addAll(it) }
                    moreUserData?.let { allUserData.addAll(it) }
-                   Log.d(TAG, "user: "+allUserData)
-                   users.postValue(Resource.success(allUserData))
+
+                  users.postValue(Resource.success(allUserData))
                 }
 
          } catch (e: Exception) {

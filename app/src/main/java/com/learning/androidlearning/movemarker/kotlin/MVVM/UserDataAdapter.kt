@@ -33,8 +33,7 @@ class UserDataAdapter(private val userData: List<UserData>, val context: Context
         Glide.with(context)
                 .load(url)
                 .into(holder.userImage)
-
-    }
+        }
 
     override fun getItemCount(): Int {
         return userData.size
