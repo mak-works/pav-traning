@@ -3,7 +3,7 @@ package com.learning.androidlearning.movemarker.kotlin.Coroutine
 import android.app.Application
 import android.content.Context
 
-class AppController():Application() {
+class AppController:Application() {
 
     private var instance: AppController
     private var apiInterface: ApiInterface?=null
@@ -11,9 +11,10 @@ class AppController():Application() {
     init {
         instance=this
     }
+
     val appcontollerInstance:AppController
         get(){
-                 if(instance==null)
+                 if(instance.equals(null))
                  {
                      instance=AppController()
                  }
@@ -26,7 +27,4 @@ class AppController():Application() {
             }
             return apiInterface
         }
-
-
-
-    }
+     }

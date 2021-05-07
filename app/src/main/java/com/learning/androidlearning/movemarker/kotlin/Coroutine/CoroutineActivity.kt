@@ -14,10 +14,10 @@ import com.learning.androidlearning.movemarker.kotlin.MVVM.*
 
 class CoroutineActivity : AppCompatActivity() {
 
+    var TAG="CoroutineActivity"
     var rvUserData: RecyclerView? = null
     var apiUserAdapter: ApiUserAdapter?=null
     var userDataViewModel: ApiUserViewModel?=null
-    var TAG="CoroutineActivity"
     var appController:AppController?=null
 
 
@@ -32,7 +32,11 @@ class CoroutineActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        userDataViewModel = ViewModelProviders.of(this, appController?.let { ViewModelFactory(it) }).get(ApiUserViewModel::class.java)
+        userDataViewModel = ViewModelProviders.of(
+                this,
+                appController?.let
+                { ViewModelFactory(it) })
+                .get(ApiUserViewModel::class.java)
     }
 
     private fun getUserData() {
@@ -56,8 +60,7 @@ class CoroutineActivity : AppCompatActivity() {
         rvUserData?.addItemDecoration(
                 DividerItemDecoration(
                         rvUserData?.context,
-                        (rvUserData?.layoutManager as LinearLayoutManager).orientation)
-        )
+                        (rvUserData?.layoutManager as LinearLayoutManager).orientation))
         rvUserData?.adapter = apiUserAdapter
     }
 }

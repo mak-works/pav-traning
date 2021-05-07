@@ -25,7 +25,6 @@ class ApiUserAdapter(private val apiUsers: List<ApiUser>,val context: Context) :
 
     override fun onBindViewHolder(holder: ApiUserDataViewHolder, position: Int) {
         holder.bind(apiUsers[position])
-
     }
 
     override fun getItemCount(): Int {
@@ -40,7 +39,6 @@ class ApiUserDataViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
     fun bind(apiUsers: ApiUser) {
         tvName.text = apiUsers.name
         tvEmail.text = apiUsers.email
-
     }
 }
 

@@ -14,9 +14,11 @@ class ApiUserViewModel(private var appController: AppController):AndroidViewMode
    private val users = MutableLiveData<Resource<List<ApiUser>>>()
    private val TAG="ApiUserViewModel"
    private var apiInterface:ApiInterface?=null
+
    init {
       fetchData()
    }
+
    private fun fetchData()
    {
       viewModelScope.launch {
@@ -26,9 +28,6 @@ class ApiUserViewModel(private var appController: AppController):AndroidViewMode
                 coroutineScope {
                    Log.d(TAG, "fetchData: ----------------")
 
-
-                   /*val userDataDeferred=async { apiInterface.getUsers() }
-                   val moreUserDataDeferred=async { apiInterface.getMoreUsers() }*/
                    apiInterface=appController.appcontollerInstance.getApiInterface()
                    val userDataDeferred=async { apiInterface?.getUsers() }
                    val moreUserDataDeferred=async {apiInterface?.getMoreUsers() }
@@ -52,6 +51,7 @@ class ApiUserViewModel(private var appController: AppController):AndroidViewMode
          }
       }
    }
+
    fun getUsers(): LiveData<Resource<List<ApiUser>>> {
       Log.d(TAG, "getUsers: ")
       return users

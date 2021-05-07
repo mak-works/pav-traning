@@ -11,5 +11,4 @@ interface ApiInterface {
 
     @GET("more-users")
     suspend fun getMoreUsers(): List<ApiUser>
-
 }
