@@ -29,7 +29,7 @@ class ApiUserAdapter(private val apiUsers: List<ApiUser>,val context: Context) :
         Glide.with(context)
                 .load(position.avatar)
                 .into(holder.imvUser)
-        }
+    }
 
     override fun getItemCount(): Int {
         return apiUsers.size
