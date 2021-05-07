@@ -7,7 +7,7 @@
     android:layout_height="60dp">
 
     <ImageView
-        android:id="@+id/imageViewAvatar"
+        android:id="@+id/imv_user"
         android:layout_width="60dp"
         android:layout_height="0dp"
         android:padding="4dp"
@@ -16,19 +16,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_username"
+        android:id="@+id/textview_username"
         style="@style/TextAppearance.AppCompat.Large"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
+        app:layout_constraintStart_toEndOf="@+id/imv_user"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="MindOrks" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_useremail"
+        android:id="@+id/textview_useremail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

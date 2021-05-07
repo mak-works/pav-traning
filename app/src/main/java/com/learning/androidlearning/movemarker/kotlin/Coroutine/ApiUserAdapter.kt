@@ -1,6 +1,7 @@
 package com.learning.androidlearning.movemarker.kotlin.Coroutine
 
 import android.content.Context
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.learning.androidlearning.R
+import kotlin.coroutines.coroutineContext
 
 class ApiUserAdapter(private val apiUsers: List<ApiUser>,val context: Context) : RecyclerView.Adapter<ApiUserDataViewHolder>() {
 
@@ -24,8 +26,12 @@ class ApiUserAdapter(private val apiUsers: List<ApiUser>,val context: Context) :
     }
 
     override fun onBindViewHolder(holder: ApiUserDataViewHolder, position: Int) {
-        holder.bind(apiUsers[position])
-    }
+        var position=apiUsers[position]
+        holder.bind(position)
+        Glide.with(context)
+                .load(position.avatar)
+                .into(holder.imvUser)
+        }
 
     override fun getItemCount(): Int {
         return apiUsers.size
@@ -33,8 +39,9 @@ class ApiUserAdapter(private val apiUsers: List<ApiUser>,val context: Context) :
 }
 
 class ApiUserDataViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-    val tvName: TextView = itemView.findViewById(R.id.textView_username)
-    val tvEmail: TextView = itemView.findViewById(R.id.textView_useremail)
+    val tvName: TextView = itemView.findViewById(R.id.textview_username)
+    val tvEmail: TextView = itemView.findViewById(R.id.textview_useremail)
+    val imvUser:ImageView= itemView.findViewById(R.id.imv_user)
 
     fun bind(apiUsers: ApiUser) {
         tvName.text = apiUsers.name
