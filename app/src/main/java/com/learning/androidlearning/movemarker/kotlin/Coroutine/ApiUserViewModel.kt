@@ -35,11 +35,10 @@ class ApiUserViewModel(private var appController: AppController):AndroidViewMode
                    userData?.let { allUserData.addAll(it) }
                    moreUserData?.let { allUserData.addAll(it) }
 
-                  users.postValue(Resource.success(allUserData))
+                   users.postValue(Resource.success(allUserData))
                 }
-
          } catch (e: Exception) {
-            users.postValue(Resource.error("Something Went Wrong", null))
+                   users.postValue(Resource.error("Something Went Wrong", null))
          }
       }
    }
