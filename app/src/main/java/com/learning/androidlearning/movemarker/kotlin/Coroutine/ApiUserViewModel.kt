@@ -19,8 +19,7 @@ class ApiUserViewModel(private var appController: AppController):AndroidViewMode
       fetchData()
    }
 
-   private fun fetchData()
-   {
+   private fun fetchData() {
       viewModelScope.launch {
          try {
                coroutineScope {
