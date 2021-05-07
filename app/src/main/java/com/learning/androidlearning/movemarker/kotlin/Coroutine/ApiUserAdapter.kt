@@ -15,10 +15,8 @@ import com.learning.androidlearning.R
 import kotlin.coroutines.coroutineContext
 
 class ApiUserAdapter(private val apiUsers: List<ApiUser>,val context: Context) : RecyclerView.Adapter<ApiUserDataViewHolder>() {
-
     val TAG = "ApiUserAdapter"
     val layoutInflater = LayoutInflater.from(context)
-    val url="https://www.gstatic.com/webp/gallery3/2.png"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApiUserDataViewHolder {
         val view = layoutInflater.inflate(R.layout.item_layout, parent, false)
