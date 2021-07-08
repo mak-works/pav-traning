@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_margin="5dp"
+        android:text="DL0011"
+        android:textSize="17dp"
+        android:id="@+id/tv_driverId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:layout_margin="5dp"
+        android:text="Chris"
+        android:textSize="17dp"
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:layout_margin="5dp"
+        android:text="9876543112"
+        android:textSize="17dp"
+        android:id="@+id/tv_mobileNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+</LinearLayout>

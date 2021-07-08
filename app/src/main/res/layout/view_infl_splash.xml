@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lay_ln_lang"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/material_48dp"
+    android:background="@color/white_transparent"
+    android:elevation="@dimen/material_8dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_arabic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/material_16dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/white"
+        app:contentPadding="@dimen/material_8dp">
+
+        <com.learning.androidlearning.movemarker.kotlin.splash.FontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/Arabic"
+            android:textColor="@color/product_color_1"
+            android:textSize="16sp"
+            app:font_name="@string/font_robot" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_eng"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/material_16dp"
+        android:layout_marginEnd="@dimen/material_16dp"
+        android:layout_weight="1"
+        app:cardCornerRadius="@dimen/material_4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/product_color_1"
+            android:orientation="vertical">
+
+            <com.learning.androidlearning.movemarker.kotlin.splash.FontTextView
+                android:id="@+id/tv_dia_done"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:padding="@dimen/material_8dp"
+                android:text="@string/English"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:font_name="@string/font_robot" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

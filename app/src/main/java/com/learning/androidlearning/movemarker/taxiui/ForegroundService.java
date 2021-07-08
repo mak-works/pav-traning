@@ -7,11 +7,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.Looper;
+import android.provider.Settings;
 import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -22,7 +24,17 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.learning.androidlearning.R;
-    import com.learning.androidlearning.movemarker.taxiui.utils.MyAppConstants;
+import com.learning.androidlearning.movemarker.maps.ShowBackgroundLocationActivity;
+import com.learning.androidlearning.movemarker.roomdb.DriverDetails;
+import com.learning.androidlearning.movemarker.roomdbnew.DriverDetailRepository;
+import com.learning.androidlearning.movemarker.taxiui.utils.MyAppConstants;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class ForegroundService extends Service {
     private final IBinder myBinder = new LocalBoundService();
@@ -35,15 +47,24 @@ public class ForegroundService extends Service {
     public void onCreate() {
         Log.d(TAG, "onCreate: ");
         super.onCreate();
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        createLocationCallback();
-        createLocationRequest();
-        requestLocationUpdates();
+        /*fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);*/
+        DriverDetailRepository driverDetailRepository=new DriverDetailRepository(getApplication());
+        Date dateNow=new Date(System.currentTimeMillis());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateNow);
+        calendar.add(Calendar.DATE, -4);
+        Date dateNew=calendar.getTime();
+        DriverDetails driverDetails = new DriverDetails();
+        driverDetails.setDriverId(4578);
+        driverDetails.setMobileNumber("96975536760");
+        driverDetails.setName("Pavithra");
+        driverDetails.setDate(dateNew);
+        driverDetailRepository.insert(driverDetails);
+        driverDetailRepository.delete();
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand: ");
-        GenerateUpdteNotification("New Foreground Notification");
         return START_NOT_STICKY; }
 
     @Override
@@ -54,7 +75,7 @@ public class ForegroundService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        removeLocationUpdates();
+        /*removeLocationUpdates();*/
     }
 
     @Override
@@ -94,7 +115,7 @@ public class ForegroundService extends Service {
         LocalBroadcastManager.getInstance(this).sendBroadcast(broadCastIntent);
     }
 
-    public void GenerateUpdteNotification(String Text) {
+    public void GenerateUpdteNotification(String Text,String count) {
         Log.d(TAG, "updateNotification: ");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
@@ -104,16 +125,22 @@ public class ForegroundService extends Service {
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(serviceChannel);
-            Intent notificationIntent = new Intent(this, LoginActivity.class);
+            Intent notificationIntent = new Intent(this, ShowBackgroundLocationActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this,
                     0, notificationIntent, 0);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, MyAppConstants.CHANNEL_ID);
             Notification notification = notificationBuilder.setOngoing(true)
                     .setSmallIcon(R.drawable.ic_launcher_background)
                     .setContentText(Text)
+                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+                   /* .addAction(R.mipmap.ic_launcher,"Open",pendingIntent)*/
+                    .addAction(R.mipmap.ic_launcher,"Open Notification", pendingIntent)
                     .setContentTitle("Foreground Service")
-                    .setPriority(NotificationManager.IMPORTANCE_MIN)
+                    .setPriority(NotificationManager.IMPORTANCE_HIGH)
+                    .setFullScreenIntent(pendingIntent,true)
                     .setCategory(Notification.CATEGORY_SERVICE)
+                    .setColor(Color.BLACK)
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(String.format(String.valueOf(R.string.countValue),count)))
                     .setContentIntent(pendingIntent) //intent
                     .build();
             Log.d(TAG, "notification: " + notification);

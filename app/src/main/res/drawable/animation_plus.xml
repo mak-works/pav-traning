@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="512dp"
+            android:height="512dp"
+            android:viewportWidth="512"
+            android:viewportHeight="512">
+            <path
+                android:name="plus"
+                android:pathData="@string/pluspathone"
+                android:fillColor="#000000"
+                android:fillType="nonZero"
+                android:strokeColor="#00000000"/>
+        </vector>
+    </aapt:attr>
+    <target
+        android:name="plus">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="450"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="pathData"
+                    android:valueFrom="@string/pluspathone"
+                    android:valueTo="@string/equalpathone"
+                    android:valueType="pathType" />
+
+
+
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
+
+
+
+
