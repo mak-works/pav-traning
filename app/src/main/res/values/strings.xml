@@ -50,6 +50,8 @@
     <string name="trackmytrip" translatable="false">Track my trip</string>
     <string name="myjobs" translatable="false">My jobs</string>
     <string name="dialogtext" translatable="false">You are in shift out</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
