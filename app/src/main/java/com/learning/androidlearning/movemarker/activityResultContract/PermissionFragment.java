@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.learning.androidlearning.R;
 
 public class PermissionFragment extends Fragment implements View.OnClickListener{
-
     private Button btnRequestPermission,btnCheckPermission;
     private FragmentActivity fr;
     private String TAG="PermissionFragment";

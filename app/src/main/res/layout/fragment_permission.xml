@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".movemarker.activityResultContract.PermissionFragment">
-
    <Button
        android:id="@+id/btn_request_permission"
        android:text="Request Permission"
@@ -17,7 +16,6 @@
        android:layout_gravity="center">
 
    </Button>
-
    <Button
        android:id="@+id/btn_check_permission"
        android:text="Check Permission"
@@ -28,10 +26,5 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_gravity="center">
-
    </Button>
-
-
-
-
 </FrameLayout>
