@@ -3,7 +3,6 @@
 
     <string name="map_key" translatable="false">AIzaSyDCgfGkAkgdfRyIytAG8jckmw7cyD5PNCs</string>
     <string name="alcyonTaxi" translatable="false">Alcyon Taxi</string>
-    <string name="signIn" translatable="false">Sign in</string>
     <string name="signInCaps" translatable="false">SIGN IN</string>
     <string name="entertext" translatable="false">Enter your mobile no, driver ID  &amp; password</string>
     <string name="mobiletext" translatable="false">Mobile Number</string>
